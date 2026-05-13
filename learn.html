@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EasyTyping Learn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="learn.css">
+</head>
+<body>
+
+<!-- HIDDEN INPUT -->
+<input type="text" id="hidden-input" autocomplete="off" spellcheck="false">
+
+<!-- ========================= -->
+<!-- MAIN NAVBAR -->
+<!-- ========================= -->
+
+<header class="main-navbar">
+
+    <div class="navbar-left">
+
+        <h1 class="main-logo">
+            <a href="index.html">
+                EasyTyping
+            </a>
+        </h1>
+
+    </div>
+
+
+    <ul class="main-nav-links">
+
+        <li>
+            <a href="learn.html" class="active-nav">
+                Learn
+            </a>
+        </li>
+
+        <li>
+            <a href="practice.html">
+                Practice
+            </a>
+        </li>
+
+        <li>
+            <a href="analytics.html">
+                Analytics
+            </a>
+        </li>
+
+        <li>
+            <a href="profile.html">
+                Profile
+            </a>
+        </li>
+
+        <li>
+            <a href="games.html">
+                Games
+            </a>
+        </li>
+
+    </ul>
+
+
+    <div class="navbar-right">
+
+        <button class="nav-icon-btn" id="theme-btn">
+            🌙
+        </button>
+
+        <button class="nav-icon-btn">
+            🪐
+        </button>
+
+    </div>
+
+</header>
+
+<!-- MAIN LAYOUT -->
+<div class="main-layout">
+
+  <!-- LEFT SIDEBAR -->
+  <aside class="left-sidebar">
+
+    <div class="progress-card">
+      <div class="progress-card-title">COURSE PROGRESS</div>
+      <div class="progress-circle-wrap">
+        <div class="progress-circle">
+          <svg width="90" height="90" viewBox="0 0 90 90">
+            <circle cx="45" cy="45" r="38" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="8"/>
+            <circle id="progress-arc" cx="45" cy="45" r="38" fill="none"
+              stroke="url(#pgrad)" stroke-width="8"
+              stroke-linecap="round"
+              stroke-dasharray="238.76"
+              stroke-dashoffset="181.46"/>
+            <defs>
+              <linearGradient id="pgrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#2563eb"/>
+                <stop offset="100%" stop-color="#38bdf8"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <div class="circle-text" id="circle-text">24%</div>
+        </div>
+      </div>
+      <div class="progress-label">Overall Progress</div>
+      <div class="lesson-stat">Lessons</div>
+      <div class="lesson-stat"><strong>4 / 26 Completed</strong></div>
+    </div>
+
+    <div class="lessons-card">
+      <div class="lessons-label">LESSONS</div>
+      <div id="lessons-list"></div>
+      <div class="lessons-more">···</div>
+
+      <div class="xp-card">
+        <div class="xp-label">XP EARNED</div>
+        <div class="xp-row">
+          <div class="xp-star">⭐</div>
+          <div class="xp-amount" id="xp-amount">420</div>
+        </div>
+        <div class="xp-sub">Keep Going!</div>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- CENTER -->
+  <main class="trainer-section">
+    <div class="trainer-card" id="trainer-card">
+
+      <div class="trainer-title">
+        <span class="lesson-num-label" id="lesson-num-label">Lesson 1.1</span>
+        <span>- Touch typing basics</span>
+      </div>
+
+      <div class="guide-line">
+        <div class="guide-dot">
+          <svg viewBox="0 0 12 12"><polygon points="2,1 11,6 2,11"/></svg>
+        </div>
+        <p>Type the key sequences, follow the highlighted key</p>
+      </div>
+
+      <div class="typing-preview" id="typing-preview"></div>
+
+      <div class="practice-grid" id="practice-grid"></div>
+
+      <div class="guide-line">
+        <div class="guide-dot">
+          <svg viewBox="0 0 12 12"><polygon points="2,1 11,6 2,11"/></svg>
+        </div>
+        <p>Look at the on-screen keyboard and hands for hints, when needed</p>
+      </div>
+
+      <!-- KEYBOARD -->
+      <div class="keyboard-wrapper">
+
+        <!-- Number row -->
+        <div class="keyboard-row">
+          <div class="key key-dark" style="min-width:46px;font-size:10px;"><span>~</span><span class="key-sub">`</span></div>
+          <div class="key key-dark"><span>!</span><span class="key-sub">1</span></div>
+          <div class="key key-dark"><span>@</span><span class="key-sub">2</span></div>
+          <div class="key key-dark"><span>#</span><span class="key-sub">3</span></div>
+          <div class="key key-dark"><span>$</span><span class="key-sub">4</span></div>
+          <div class="key key-dark"><span>%</span><span class="key-sub">5</span></div>
+          <div class="key key-dark"><span>^</span><span class="key-sub">6</span></div>
+          <div class="key key-dark"><span>&</span><span class="key-sub">7</span></div>
+          <div class="key key-dark"><span>*</span><span class="key-sub">8</span></div>
+          <div class="key key-dark"><span>(</span><span class="key-sub">9</span></div>
+          <div class="key key-dark"><span>)</span><span class="key-sub">0</span></div>
+          <div class="key key-dark"><span>_</span><span class="key-sub">-</span></div>
+          <div class="key key-dark"><span>+</span><span class="key-sub">=</span></div>
+          <div class="key key-wide" style="min-width:72px;">Back</div>
+        </div>
+
+        <!-- QWERTY row -->
+        <div class="keyboard-row">
+          <div class="key key-wide">Tab</div>
+          <div class="key red"    data-key="Q">Q</div>
+          <div class="key orange" data-key="W">W</div>
+          <div class="key yellow" data-key="E">E</div>
+          <div class="key green"  data-key="R">R</div>
+          <div class="key teal"   data-key="T">T</div>
+          <div class="key teal"   data-key="Y">Y</div>
+          <div class="key blue"   data-key="U">U</div>
+          <div class="key indigo" data-key="I">I</div>
+          <div class="key purple" data-key="O">O</div>
+          <div class="key pink"   data-key="P">P</div>
+          <div class="key key-dark"><span>{</span><span class="key-sub">[</span></div>
+          <div class="key key-dark"><span>}</span><span class="key-sub">]</span></div>
+          <div class="key key-dark" style="min-width:52px;font-size:11px;">\</div>
+        </div>
+
+        <!-- Home row -->
+        <div class="keyboard-row">
+          <div class="key key-wide">Caps</div>
+          <div class="key red"    data-key="A">A</div>
+          <div class="key orange" data-key="S">S</div>
+          <div class="key yellow" data-key="D">D</div>
+          <div class="key green"  data-key="F">F</div>
+          <div class="key teal"   data-key="G">G</div>
+          <div class="key teal"   data-key="H">H</div>
+          <div class="key blue"   data-key="J">J</div>
+          <div class="key indigo" data-key="K">K</div>
+          <div class="key purple" data-key="L">L</div>
+          <div class="key pink"   data-key=";">;</div>
+          <div class="key key-dark">"</div>
+          <div class="key key-wide">Enter</div>
+        </div>
+
+        <!-- Bottom row -->
+        <div class="keyboard-row">
+          <div class="key key-wide" style="min-width:90px;">Shift</div>
+          <div class="key red"    data-key="Z">Z</div>
+          <div class="key orange" data-key="X">X</div>
+          <div class="key yellow" data-key="C">C</div>
+          <div class="key green"  data-key="V">V</div>
+          <div class="key teal"   data-key="B">B</div>
+          <div class="key blue"   data-key="N">N</div>
+          <div class="key indigo" data-key="M">M</div>
+          <div class="key key-dark"><span>&lt;</span><span class="key-sub">,</span></div>
+          <div class="key key-dark"><span>&gt;</span><span class="key-sub">.</span></div>
+          <div class="key key-dark"><span>?</span><span class="key-sub">/</span></div>
+          <div class="key key-wide" style="min-width:90px;">Shift</div>
+        </div>
+
+        <!-- Space row -->
+        <div class="keyboard-row">
+          <div class="key key-wide">Ctrl</div>
+          <div class="key key-wide" style="min-width:46px;"></div>
+          <div class="key key-wide" style="min-width:46px;"></div>
+          <div class="key-space" id="space-key">Space</div>
+          <div class="key key-wide" style="min-width:46px;"></div>
+          <div class="key key-wide" style="min-width:46px;"></div>
+          <div class="key key-wide">Ctrl</div>
+        </div>
+
+      </div>
+
+      <!-- HANDS -->
+      <div class="hands-area">
+        <div class="hand-img left-hand">🤚</div>
+        <div class="hand-img">🤚</div>
+      </div>
+
+    </div>
+
+    <!-- <div class="tip-bar">
+      💡 Tip: Keep your eyes on the screen and use all your fingers. Accuracy comes first!
+    </div> -->
+  </main>
+
+  <!-- RIGHT SIDEBAR -->
+  <aside class="right-sidebar">
+
+    <button class="close-btn">✕</button>
+
+    <div class="right-card">
+      <h3>📊 Your Progress</h3>
+      <div class="bars-chart" id="bars-chart"></div>
+    </div>
+
+    <div class="right-divider"></div>
+
+    <div class="timer-section">
+      <div class="timer-label">Time</div>
+      <div class="timer-value" id="timer">04:00</div>
+    </div>
+
+    <div class="right-buttons">
+      <button class="next-btn" id="next-btn">Next</button>
+      <button class="cancel-btn" id="cancel-btn">Cancel</button>
+    </div>
+
+  </aside>
+</div>
+
+<script src="learnContent.js"></script>
+<script src="learn.js"></script>
+
+</body>
+</html>

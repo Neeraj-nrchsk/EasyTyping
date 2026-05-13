@@ -1,0 +1,850 @@
+/* =========================================
+   EASYTYPING V2
+   FALLING WORDS CSS
+   fallingwords.css
+========================================= */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+
+    font-family: "Poppins", sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #1e293b,
+            #0f172a,
+            #020617
+        );
+
+    color: white;
+
+    overflow: hidden;
+
+}
+
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+.game-navbar{
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 80px;
+
+    padding: 0 28px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    z-index: 1000;
+
+    backdrop-filter: blur(12px);
+
+    background:
+        rgba(2,6,23,0.7);
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.08);
+
+}
+
+.nav-left{
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+}
+
+.back-btn{
+
+    padding: 12px 18px;
+
+    border-radius: 16px;
+
+    text-decoration: none;
+
+    color: white;
+
+    font-weight: 600;
+
+    background:
+        rgba(255,255,255,0.08);
+
+}
+
+.nav-left h1{
+
+    font-size: 28px;
+
+}
+
+.nav-right{
+
+    display: flex;
+
+    gap: 14px;
+
+}
+
+.nav-right button{
+
+    border: none;
+
+    padding: 12px 18px;
+
+    border-radius: 16px;
+
+    cursor: pointer;
+
+    font-weight: 700;
+
+    color: white;
+
+    background:
+        rgba(255,255,255,0.08);
+
+    transition: 0.3s;
+
+}
+
+.nav-right button:hover{
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.falling-game-page{
+
+    width: 100%;
+
+    height: 100vh;
+
+    padding-top: 100px;
+
+    padding-left: 24px;
+
+    padding-right: 24px;
+
+    padding-bottom: 24px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+
+}
+
+
+/* =========================================
+   HUD
+========================================= */
+
+.top-hud{
+
+    display: flex;
+
+    gap: 14px;
+
+    flex-wrap: wrap;
+
+}
+
+.hud-pill{
+
+    min-width: 120px;
+
+    padding: 16px 18px;
+
+    border-radius: 22px;
+
+    background:
+        rgba(255,255,255,0.05);
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    backdrop-filter: blur(12px);
+
+}
+
+.hud-pill span{
+
+    color: #94a3b8;
+
+    font-size: 13px;
+
+}
+
+.hud-pill h2{
+
+    margin-top: 8px;
+
+    font-size: 32px;
+
+}
+
+
+/* =========================================
+   GAME WRAPPER
+========================================= */
+
+.game-wrapper{
+
+    position: relative;
+
+    flex: 1;
+
+    overflow: hidden;
+
+    border-radius: 36px;
+
+    background:
+        rgba(255,255,255,0.04);
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    backdrop-filter: blur(14px);
+
+}
+
+
+/* =========================================
+   BACKGROUND GLOW
+========================================= */
+
+.background-glow{
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(132,204,22,0.12),
+            transparent 70%
+        );
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================
+   GAME FIELD
+========================================= */
+
+.game-field{
+
+    position: relative;
+
+    width: 100%;
+
+    height: 100%;
+
+    overflow: hidden;
+
+}
+
+
+/* =========================================
+   FALLING WORDS
+========================================= */
+
+.falling-word{
+
+    position: absolute;
+
+    padding: 10px 16px;
+
+    border-radius: 16px;
+
+    font-size: 24px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    color: white;
+
+    background:
+        rgba(132,204,22,0.14);
+
+    border:
+        1px solid rgba(132,204,22,0.3);
+
+    box-shadow:
+        0 8px 24px rgba(132,204,22,0.18);
+
+    backdrop-filter: blur(10px);
+
+    user-select: none;
+
+    animation:
+        wordGlow 2s infinite;
+
+}
+
+@keyframes wordGlow{
+
+    0%{
+
+        box-shadow:
+            0 0 0 rgba(132,204,22,0.2);
+
+    }
+
+    50%{
+
+        box-shadow:
+            0 0 24px rgba(132,204,22,0.4);
+
+    }
+
+    100%{
+
+        box-shadow:
+            0 0 0 rgba(132,204,22,0.2);
+
+    }
+
+}
+
+
+/* =========================================
+   ACTIVE WORD
+========================================= */
+
+.active-word{
+
+    border:
+        1px solid rgba(56,189,248,0.5);
+
+    background:
+        rgba(56,189,248,0.18);
+
+    box-shadow:
+        0 0 28px rgba(56,189,248,0.35);
+
+}
+
+
+/* =========================================
+   TYPING PREVIEW
+========================================= */
+
+.typing-preview{
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 30px;
+
+    transform:
+        translateX(-50%);
+
+    min-width: 320px;
+
+    padding: 18px 24px;
+
+    border-radius: 24px;
+
+    text-align: center;
+
+    background:
+        rgba(15,23,42,0.75);
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    backdrop-filter: blur(14px);
+
+}
+
+.typing-preview span{
+
+    color: #94a3b8;
+
+    font-size: 14px;
+
+}
+
+.typing-preview h2{
+
+    margin-top: 8px;
+
+    font-size: 32px;
+
+    color: #84cc16;
+
+}
+
+
+/* =========================================
+   POPUPS
+========================================= */
+
+.combo-popup,
+.level-popup,
+.boss-warning{
+
+    position: absolute;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    padding: 16px 24px;
+
+    border-radius: 22px;
+
+    font-size: 28px;
+
+    font-weight: 700;
+
+    z-index: 50;
+
+    animation:
+        popupFX 0.8s ease;
+
+}
+
+.combo-popup{
+
+    top: 80px;
+
+    background:
+        rgba(132,204,22,0.18);
+
+}
+
+.level-popup{
+
+    top: 160px;
+
+    background:
+        rgba(56,189,248,0.18);
+
+}
+
+.boss-warning{
+
+    top: 240px;
+
+    background:
+        rgba(239,68,68,0.18);
+
+}
+
+@keyframes popupFX{
+
+    from{
+
+        opacity: 0;
+
+        transform:
+            translateX(-50%)
+            scale(0.7);
+
+    }
+
+    to{
+
+        opacity: 1;
+
+        transform:
+            translateX(-50%)
+            scale(1);
+
+    }
+
+}
+
+
+/* =========================================
+   PARTICLES
+========================================= */
+
+.particle{
+
+    position: absolute;
+
+    width: 10px;
+
+    height: 10px;
+
+    border-radius: 50%;
+
+    background:
+        #84cc16;
+
+    animation:
+        particleFX 1s linear forwards;
+
+}
+
+@keyframes particleFX{
+
+    from{
+
+        opacity: 1;
+
+        transform:
+            scale(1);
+
+    }
+
+    to{
+
+        opacity: 0;
+
+        transform:
+            translateY(-50px)
+            scale(0);
+
+    }
+
+}
+
+
+/* =========================================
+   BOTTOM BAR
+========================================= */
+
+.bottom-bar{
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+}
+
+.bottom-left{
+
+    display: flex;
+
+    gap: 14px;
+
+}
+
+.mini-stat{
+
+    padding: 16px 20px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(255,255,255,0.05);
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+}
+
+.mini-stat span{
+
+    color: #94a3b8;
+
+    font-size: 13px;
+
+}
+
+.mini-stat strong{
+
+    display: block;
+
+    margin-top: 6px;
+
+    font-size: 24px;
+
+}
+
+.game-tip{
+
+    padding: 14px 22px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(255,255,255,0.05);
+
+    color: #cbd5e1;
+
+}
+
+.bottom-right button{
+
+    border: none;
+
+    padding: 14px 22px;
+
+    border-radius: 18px;
+
+    cursor: pointer;
+
+    font-weight: 700;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            to right,
+            #84cc16,
+            #65a30d
+        );
+
+}
+
+
+/* =========================================
+   MODAL
+========================================= */
+
+.game-over-overlay{
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(0,0,0,0.7);
+
+    backdrop-filter: blur(8px);
+
+    z-index: 999;
+
+}
+
+.game-over-modal{
+
+    position: fixed;
+
+    top: 50%;
+
+    left: 50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    width: 600px;
+
+    max-width: 92%;
+
+    padding: 36px;
+
+    border-radius: 34px;
+
+    z-index: 1000;
+
+    background:
+        #0f172a;
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    text-align: center;
+
+}
+
+.game-over-modal h1{
+
+    font-size: 48px;
+
+}
+
+.game-over-modal p{
+
+    margin-top: 10px;
+
+    color: #94a3b8;
+
+}
+
+.result-grid{
+
+    margin-top: 30px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap: 18px;
+
+}
+
+.result-card{
+
+    padding: 22px;
+
+    border-radius: 24px;
+
+    background:
+        rgba(255,255,255,0.05);
+
+}
+
+.result-card span{
+
+    color: #94a3b8;
+
+}
+
+.result-card h2{
+
+    margin-top: 10px;
+
+    font-size: 38px;
+
+}
+
+.modal-buttons{
+
+    margin-top: 28px;
+
+    display: flex;
+
+    gap: 16px;
+
+}
+
+.modal-buttons button,
+.back-arcade-btn{
+
+    flex: 1;
+
+    border: none;
+
+    padding: 16px;
+
+    border-radius: 18px;
+
+    cursor: pointer;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+}
+
+#playAgainBtn{
+
+    background:
+        linear-gradient(
+            to right,
+            #84cc16,
+            #65a30d
+        );
+
+    color: white;
+
+}
+
+.back-arcade-btn{
+
+    background:
+        rgba(255,255,255,0.08);
+
+    color: white;
+
+}
+
+
+/* =========================================
+   UTILITIES
+========================================= */
+
+.hidden{
+
+    display: none;
+
+}
+
+.focus-mode .top-hud,
+.focus-mode .bottom-bar{
+
+    opacity: 0.1;
+
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media(max-width: 900px){
+
+    .top-hud{
+
+        overflow-x: auto;
+
+        flex-wrap: nowrap;
+
+    }
+
+    .bottom-bar{
+
+        flex-direction: column;
+
+    }
+
+}
+
+@media(max-width: 600px){
+
+    .result-grid{
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+    .modal-buttons{
+
+        flex-direction: column;
+
+    }
+
+    .typing-preview{
+
+        min-width: auto;
+
+        width: 90%;
+
+    }
+
+}

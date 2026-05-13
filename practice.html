@@ -1,0 +1,614 @@
+<!-- =========================
+     PRACTICE.HTML
+     EASYTYPING V2
+========================= -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Practice | EasyTyping V2
+    </title>
+
+    <!-- CSS -->
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+    <link
+        rel="stylesheet"
+        href="practice.css">
+
+    <!-- FONT -->
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <nav>
+
+        <h1 class="logo">
+
+            <a href="index.html">
+                EasyTyping
+            </a>
+
+        </h1>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="learn.html">
+                    Learn
+                </a>
+            </li>
+
+            <li>
+                <a href="practice.html">
+                    Practice
+                </a>
+            </li>
+
+            <li>
+                <a href="analytics.html">
+                    Analytics
+                </a>
+            </li>
+
+            <li>
+                <a href="profile.html">
+                    Profile
+                </a>
+            </li>
+
+            <li>
+                <a href="games.html">
+                    Games
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================
+     PRACTICE SECTION
+    ========================= -->
+
+    <section class="practice-page">
+
+        <main class="practice-main">
+
+
+            <!-- =========================
+                HEADER
+            ========================== -->
+
+            <div class="practice-header">
+
+                <div class="practice-heading">
+
+                    <h1>
+                        Typing Practice
+                    </h1>
+
+                    <p>
+                        Improve speed and accuracy with focused typing sessions.
+                    </p>
+
+                </div>
+
+
+                <!-- LIVE STATS -->
+
+                <div class="practice-live-stats">
+
+                    <div class="practice-stat">
+
+                        <span>
+                            WPM
+                        </span>
+
+                        <h2 id="practice-wpm">
+                            0
+                        </h2>
+
+                    </div>
+
+                    <div class="practice-stat">
+
+                        <span>
+                            Accuracy
+                        </span>
+
+                        <h2 id="practice-accuracy">
+                            100%
+                        </h2>
+
+                    </div>
+
+                    <div class="practice-stat">
+
+                        <span>
+                            Time
+                        </span>
+
+                        <h2 id="practice-timer">
+                            30
+                        </h2>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================
+                TOP SETTINGS BAR
+            ========================== -->
+
+            <div class="practice-settings-bar">
+
+
+                <!-- MODES -->
+
+                <div class="practice-setting-group">
+
+                    <span class="setting-label">
+                        Mode
+                    </span>
+
+                    <div class="mode-buttons">
+
+                        <button class="mode-btn active-mode">
+                            Words
+                        </button>
+
+                        <button class="mode-btn">
+                            Numbers
+                        </button>
+
+                        <button class="mode-btn">
+                            Punctuation
+                        </button>
+
+                        <button class="mode-btn">
+                            Mixed
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- DURATION -->
+
+                <div class="practice-setting-group">
+
+                    <span class="setting-label">
+                        Duration
+                    </span>
+
+                    <div class="duration-buttons">
+
+                        <button class="duration-btn active-duration">
+                            15s
+                        </button>
+
+                        <button class="duration-btn">
+                            30s
+                        </button>
+
+                        <button class="duration-btn">
+                            60s
+                        </button>
+
+                        <button class="duration-btn">
+                            120s
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================
+                PRACTICE BOX
+            ========================== -->
+
+            <div class="practice-box">
+
+                <div class="practice-text">
+
+                </div>
+
+                <input
+                    type="text"
+                    class="practice-input"
+                    autocomplete="off"
+                    spellcheck="false">
+
+            </div>
+
+
+
+            <!-- =========================
+                CONTROLS
+            ========================== -->
+
+            <div class="practice-controls">
+
+                <button class="restart-practice-btn">
+                    Restart
+                </button>
+
+                <button class="focus-btn">
+                    Focus Mode
+                </button>
+
+                <button class="sound-btn">
+                    Sound
+                </button>
+
+            </div>
+
+
+
+            <!-- =========================
+                PERFORMANCE
+            ========================== -->
+
+            <div class="practice-performance-section">
+
+
+                <div class="performance-top-grid">
+
+                    <div class="performance-card">
+
+                        <span>
+                            Best WPM
+                        </span>
+
+                        <h2>
+                            42
+                        </h2>
+
+                    </div>
+
+
+                    <div class="performance-card">
+
+                        <span>
+                            Average Accuracy
+                        </span>
+
+                        <h2>
+                            96%
+                        </h2>
+
+                    </div>
+
+
+                    <div class="performance-card">
+
+                        <span>
+                            Total Sessions
+                        </span>
+
+                        <h2>
+                            124
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- GRAPH -->
+
+                <div class="practice-graph-card">
+
+                    <div class="graph-header">
+
+                        <h3>
+                            Performance Graph
+                        </h3>
+
+                        <span>
+                            Last 7 Sessions
+                        </span>
+
+                    </div>
+
+                    <div class="practice-graph">
+
+                        <div class="graph-column">
+                            <span class="graph-value">42</span>
+                            <div class="graph-bar" style="height:42%"></div>
+                            <span class="graph-day">Mon</span>
+                        </div>
+
+                        <div class="graph-column">
+                            <span class="graph-value">58</span>
+                            <div class="graph-bar" style="height:58%"></div>
+                            <span class="graph-day">Tue</span>
+                        </div>
+
+                        <div class="graph-column">
+                            <span class="graph-value">67</span>
+                            <div class="graph-bar" style="height:67%"></div>
+                            <span class="graph-day">Wed</span>
+                        </div>
+
+                        <div class="graph-column">
+                            <span class="graph-value">81</span>
+                            <div class="graph-bar" style="height:81%"></div>
+                            <span class="graph-day">Thu</span>
+                        </div>
+
+                        <div class="graph-column">
+                            <span class="graph-value">72</span>
+                            <div class="graph-bar" style="height:72%"></div>
+                            <span class="graph-day">Fri</span>
+                        </div>
+
+                        <div class="graph-column">
+                            <span class="graph-value">92</span>
+                            <div class="graph-bar" style="height:92%"></div>
+                            <span class="graph-day">Sat</span>
+                        </div>
+
+                        <div class="graph-column">
+                            <span class="graph-value">76</span>
+                            <div class="graph-bar" style="height:76%"></div>
+                            <span class="graph-day">Sun</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- BOTTOM ANALYTICS -->
+
+                <div class="practice-bottom-grid">
+
+
+                    <!-- WEAK KEYS -->
+
+                    <div class="weak-keys-card">
+
+                        <h3>
+                            Weak Keys
+                        </h3>
+
+                        <div class="weak-key-list">
+
+                            <div class="weak-key">
+                                f
+                            </div>
+
+                            <div class="weak-key">
+                                j
+                            </div>
+
+                            <div class="weak-key">
+                                r
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- AI COACH -->
+
+                    <div class="practice-ai-card">
+
+                        <h3>
+                            AI Coach
+                        </h3>
+
+                        <p>
+                            Practice punctuation mode to improve consistency and reduce typing hesitation.
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- BADGES -->
+
+                    <div class="practice-badge-card">
+
+                        <h3>
+                            Latest Badges
+                        </h3>
+
+                        <div class="badge-list">
+
+                            <div class="badge-item">
+                                ⚡ Fast Fingers
+                            </div>
+
+                            <div class="badge-item">
+                                🎯 Accuracy Pro
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- LEADERBOARD -->
+
+                <div class="practice-leaderboard">
+
+                    <div class="leaderboard-header">
+
+                        <h3>
+                            Leaderboard
+                        </h3>
+
+                        <span>
+                            Weekly Ranking
+                        </span>
+
+                    </div>
+
+                    <div class="leaderboard-user">
+
+                        <span>
+                            #1 Alex
+                        </span>
+
+                        <strong>
+                            72 WPM
+                        </strong>
+
+                    </div>
+
+                    <div class="leaderboard-user">
+
+                        <span>
+                            #2 Neeraj
+                        </span>
+
+                        <strong>
+                            42 WPM
+                        </strong>
+
+                    </div>
+
+                    <div class="leaderboard-user">
+
+                        <span>
+                            #3 Sam
+                        </span>
+
+                        <strong>
+                            39 WPM
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </section>
+
+
+    <!-- =========================
+         RESULT MODAL
+    ========================== -->
+
+    <div class="practice-result-overlay hidden"></div>
+
+    <div class="practice-result-modal hidden">
+
+        <h2>
+            Practice Complete 🎉
+        </h2>
+
+        <div class="result-stats">
+
+            <div class="result-box">
+
+                <span>
+                    WPM
+                </span>
+
+                <h3>
+                    42
+                </h3>
+
+            </div>
+
+            <div class="result-box">
+
+                <span>
+                    Accuracy
+                </span>
+
+                <h3>
+                    96%
+                </h3>
+
+            </div>
+
+            <div class="result-box">
+
+                <span>
+                    XP
+                </span>
+
+                <h3>
+                    +35
+                </h3>
+
+            </div>
+
+        </div>
+
+        <div class="result-buttons">
+
+            <button class="retry-btn">
+                Retry
+            </button>
+
+            <button class="continue-btn">
+                Continue
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- JS -->
+
+    <script src="practice.js"></script>
+
+</body>
+
+</html>

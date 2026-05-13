@@ -1,0 +1,465 @@
+<!-- =========================================
+     EASYTYPING V2
+     SPEED BURST
+     speedburst.html
+========================================= -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Speed Burst | EasyTyping
+    </title>
+
+    <!-- CSS -->
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+    <link
+        rel="stylesheet"
+        href="speedburst.css">
+
+    <!-- FONT -->
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+
+
+    <!-- =========================================
+         NAVBAR
+    ========================================= -->
+
+    <nav class="speed-navbar">
+
+        <div class="nav-left">
+
+            <a
+                href="games.html"
+                class="back-btn">
+
+                ← Arcade
+
+            </a>
+
+            <h1>
+
+                Speed Burst
+
+            </h1>
+
+        </div>
+
+
+
+        <div class="nav-right">
+
+            <button id="pauseBtn">
+
+                Pause
+
+            </button>
+
+            <button id="restartBtn">
+
+                Restart
+
+            </button>
+
+        </div>
+
+    </nav>
+
+
+
+
+
+    <!-- =========================================
+         MAIN GAME
+    ========================================= -->
+
+    <section class="speedburst-page">
+
+
+
+        <!-- =========================================
+             TOP HUD
+        ========================================= -->
+
+        <div class="top-hud">
+
+            <div class="hud-pill">
+
+                <span>
+                    Score
+                </span>
+
+                <h2 id="score">
+                    0
+                </h2>
+
+            </div>
+
+            <div class="hud-pill">
+
+                <span>
+                    Combo
+                </span>
+
+                <h2 id="combo">
+                    x1
+                </h2>
+
+            </div>
+
+            <div class="hud-pill">
+
+                <span>
+                    Timer
+                </span>
+
+                <h2 id="timer">
+                    60
+                </h2>
+
+            </div>
+
+            <div class="hud-pill">
+
+                <span>
+                    WPM
+                </span>
+
+                <h2 id="wpm">
+                    0
+                </h2>
+
+            </div>
+
+            <div class="hud-pill">
+
+                <span>
+                    Accuracy
+                </span>
+
+                <h2 id="accuracy">
+                    100%
+                </h2>
+
+            </div>
+
+            <div class="hud-pill">
+
+                <span>
+                    Level
+                </span>
+
+                <h2 id="level">
+                    1
+                </h2>
+
+            </div>
+
+        </div>
+
+
+
+
+
+        <!-- =========================================
+             GAME AREA
+        ========================================= -->
+
+        <div class="burst-wrapper">
+
+
+
+            <!-- GLOW -->
+
+            <div class="burst-glow"></div>
+
+
+
+            <!-- COMBO RING -->
+
+            <div class="combo-ring"></div>
+
+
+
+            <!-- MAIN WORD -->
+
+            <div class="main-word-container">
+
+                <div
+                    class="main-word"
+                    id="mainWord">
+
+                    speed
+
+                </div>
+
+            </div>
+
+
+
+            <!-- LIVE TYPING -->
+
+            <div class="typing-container">
+
+                <span>
+                    Typing
+                </span>
+
+                <h2 id="liveTyping">
+
+                    ...
+
+                </h2>
+
+            </div>
+
+
+
+            <!-- COMBO FX -->
+
+            <div
+                class="combo-popup hidden"
+                id="comboPopup">
+
+                COMBO x5
+
+            </div>
+
+
+
+            <!-- PERFECT -->
+
+            <div
+                class="perfect-popup hidden"
+                id="perfectPopup">
+
+                PERFECT
+
+            </div>
+
+
+
+            <!-- LEVEL -->
+
+            <div
+                class="level-popup hidden"
+                id="levelPopup">
+
+                LEVEL UP
+
+            </div>
+
+        </div>
+
+
+
+
+
+        <!-- =========================================
+             BOTTOM BAR
+        ========================================= -->
+
+        <div class="bottom-bar">
+
+
+
+            <div class="mini-stat">
+
+                <span>
+                    Best Combo
+                </span>
+
+                <strong id="bestCombo">
+                    x1
+                </strong>
+
+            </div>
+
+
+
+            <div class="mini-stat">
+
+                <span>
+                    XP Earned
+                </span>
+
+                <strong id="earnedXP">
+                    +0
+                </strong>
+
+            </div>
+
+
+
+            <div class="mini-stat">
+
+                <span>
+                    Reaction
+                </span>
+
+                <strong id="reactionSpeed">
+                    0ms
+                </strong>
+
+            </div>
+
+
+
+            <button id="focusBtn">
+
+                Focus Mode
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+
+
+    <!-- =========================================
+         GAME OVER MODAL
+    ========================================= -->
+
+    <div
+        class="game-over-overlay hidden"
+        id="gameOverOverlay">
+
+    </div>
+
+
+
+    <div
+        class="game-over-modal hidden"
+        id="gameOverModal">
+
+
+        <h1>
+
+            Speed Burst Complete
+
+        </h1>
+
+        <p>
+
+            Incredible reaction speed.
+
+        </p>
+
+
+
+        <div class="results-grid">
+
+
+            <div class="result-card">
+
+                <span>
+                    Final Score
+                </span>
+
+                <h2 id="finalScore">
+                    0
+                </h2>
+
+            </div>
+
+
+            <div class="result-card">
+
+                <span>
+                    Best Combo
+                </span>
+
+                <h2 id="finalCombo">
+                    x1
+                </h2>
+
+            </div>
+
+
+            <div class="result-card">
+
+                <span>
+                    WPM
+                </span>
+
+                <h2 id="finalWPM">
+                    0
+                </h2>
+
+            </div>
+
+
+            <div class="result-card">
+
+                <span>
+                    Accuracy
+                </span>
+
+                <h2 id="finalAccuracy">
+                    100%
+                </h2>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="modal-buttons">
+
+            <button id="playAgainBtn">
+
+                Play Again
+
+            </button>
+
+            <a
+                href="games.html"
+                class="back-btn-modal">
+
+                Back To Arcade
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- JS -->
+
+    <script src="speedburst.js"></script>
+
+</body>
+
+</html>

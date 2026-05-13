@@ -1,0 +1,1212 @@
+/* =========================
+   EASYTYPING V2
+   PRACTICE CSS
+========================= */
+
+:root{
+
+    --bg-dark: #050816;
+    --bg-mid: #07101f;
+    --bg-light: #0f172a;
+
+    --card-bg:
+        rgba(255,255,255,0.04);
+
+    --card-border:
+        rgba(255,255,255,0.06);
+
+    --text:
+        #ffffff;
+
+    --muted:
+        #94a3b8;
+
+    --green:
+        #84cc16;
+
+    --green-dark:
+        #65a30d;
+
+}
+
+
+/* =========================
+   MAIN PAGE
+========================= */
+
+.practice-page{
+
+    min-height: 100vh;
+
+    padding-top: 130px;
+
+    padding-left: 60px;
+
+    padding-right: 60px;
+
+    padding-bottom: 60px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #050816 0%,
+            #07101f 45%,
+            #050816 100%
+        );
+
+}
+
+
+/* =========================
+   MAIN AREA
+========================= */
+
+.practice-main{
+
+    width: 100%;
+
+    max-width: 1450px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 34px;
+
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.practice-header{
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-end;
+
+    gap: 30px;
+
+}
+
+.practice-header h1{
+
+    font-size: 78px;
+
+    line-height: 1;
+
+    font-weight: 800;
+
+    letter-spacing: -3px;
+
+    color: white;
+
+}
+
+.practice-header p{
+
+    margin-top: 16px;
+
+    color: var(--muted);
+
+    font-size: 20px;
+
+}
+
+
+/* =========================
+   LIVE STATS
+========================= */
+
+.practice-live-stats{
+
+    display: flex;
+
+    gap: 18px;
+
+}
+
+.practice-stat{
+
+    min-width: 120px;
+
+    padding: 22px;
+
+    border-radius: 26px;
+
+    background:
+        rgba(255,255,255,0.04);
+
+    border:
+        1px solid rgba(255,255,255,0.05);
+
+    backdrop-filter: blur(12px);
+
+}
+
+.practice-stat span{
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+}
+
+.practice-stat h2{
+
+    margin-top: 12px;
+
+    font-size: 52px;
+
+    font-weight: 800;
+
+    color: white;
+
+}
+
+
+/* =========================
+   SETTINGS BAR
+========================= */
+
+.practice-settings-bar{
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 30px;
+
+    padding: 28px 34px;
+
+    border-radius: 32px;
+
+    background:
+        rgba(255,255,255,0.04);
+
+    border:
+        1px solid rgba(255,255,255,0.06);
+
+    backdrop-filter: blur(12px);
+
+}
+
+.practice-setting-group{
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 16px;
+
+}
+
+.setting-label{
+
+    font-size: 13px;
+
+    color: var(--muted);
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+    font-weight: 700;
+
+}
+
+
+/* =========================
+   BUTTON GROUPS
+========================= */
+
+.mode-buttons,
+.duration-buttons{
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+}
+
+.mode-btn,
+.duration-btn{
+
+    border: none;
+
+    padding: 14px 20px;
+
+    border-radius: 18px;
+
+    cursor: pointer;
+
+    background:
+        rgba(255,255,255,0.06);
+
+    color: white;
+
+    font-weight: 700;
+
+    font-size: 15px;
+
+    transition: 0.25s;
+
+}
+
+.mode-btn:hover,
+.duration-btn:hover{
+
+    transform: translateY(-2px);
+
+}
+
+.active-mode,
+.active-duration{
+
+    background:
+        linear-gradient(
+            to right,
+            var(--green),
+            var(--green-dark)
+        );
+
+}
+
+
+/* =========================
+   PRACTICE BOX
+========================= */
+
+.practice-box{
+
+    background: transparent;
+
+    border: none;
+
+    padding-top: 40px;
+
+    padding-bottom: 20px;
+
+    min-height: auto;
+
+    position: relative;
+
+    overflow: hidden;
+
+    max-width: 1300px;
+
+    margin: 0 auto;
+
+}
+
+.practice-text{
+
+    font-size: 38px;
+
+    line-height: 1.55;
+
+    color: rgba(255,255,255,0.22);
+
+    letter-spacing: 1px;
+
+    font-weight: 500;
+
+    word-break: break-word;
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+}
+
+.practice-input{
+
+    position: absolute;
+
+    left: -9999px;
+
+    opacity: 0;
+
+}
+
+
+/* =========================
+   CONTROLS
+========================= */
+
+.practice-controls{
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 18px;
+
+}
+
+.practice-controls button{
+
+    border: none;
+
+    padding: 15px 28px;
+
+    border-radius: 18px;
+
+    cursor: pointer;
+
+    font-weight: 700;
+
+    background:
+        rgba(255,255,255,0.05);
+
+    color: white;
+
+    font-size: 16px;
+
+    backdrop-filter: blur(10px);
+
+    transition: 0.25s;
+
+}
+
+.practice-controls button:hover{
+
+    transform: translateY(-2px);
+
+}
+
+
+/* =========================
+   PERFORMANCE SECTION
+========================= */
+
+.practice-performance-section{
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 28px;
+
+}
+
+
+/* =========================
+   PERFORMANCE TOP GRID
+========================= */
+
+.performance-top-grid{
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 22px;
+
+}
+
+.performance-card{
+
+    padding: 34px;
+
+    border-radius: 30px;
+
+    background:
+        rgba(255,255,255,0.04);
+
+    border:
+        1px solid rgba(255,255,255,0.06);
+
+    backdrop-filter: blur(10px);
+
+}
+
+.performance-card span{
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+}
+
+.performance-card h2{
+
+    margin-top: 14px;
+
+    font-size: 58px;
+
+    font-weight: 800;
+
+}
+
+
+/* =========================
+   PERFORMANCE GRAPH
+========================= */
+
+.practice-graph-card{
+
+    padding: 40px;
+
+    border-radius: 34px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.05),
+            rgba(255,255,255,0.025)
+        );
+
+    border:
+        1px solid rgba(255,255,255,0.06);
+
+    backdrop-filter: blur(18px);
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+.practice-graph-card::before{
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(132,204,22,0.08),
+            transparent 60%
+        );
+
+    pointer-events: none;
+
+}
+
+.graph-header{
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 34px;
+
+}
+
+.graph-header h3{
+
+    font-size: 30px;
+
+    font-weight: 800;
+
+    letter-spacing: -1px;
+
+}
+
+.graph-header span{
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+}
+
+
+/* =========================
+   GRAPH AREA
+========================= */
+
+.practice-graph{
+
+    position: relative;
+
+    height: 320px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 14px;
+
+    padding-top: 30px;
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.08);
+
+}
+
+
+/* GRID LINES */
+
+.practice-graph::before{
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        repeating-linear-gradient(
+            to top,
+            rgba(255,255,255,0.06) 0px,
+            rgba(255,255,255,0.06) 1px,
+            transparent 1px,
+            transparent 64px
+        );
+
+    pointer-events: none;
+
+}
+
+
+/* =========================
+   GRAPH BAR WRAPPER
+========================= */
+
+.graph-column{
+
+    flex: 1;
+
+    height: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-end;
+
+    align-items: center;
+
+    gap: 14px;
+
+}
+
+
+/* VALUE */
+
+.graph-value{
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    color: #d9f99d;
+
+    opacity: 0.9;
+
+}
+
+
+/* BAR */
+
+.graph-bar{
+
+    width: 100%;
+
+    max-width: 54px;
+
+    border-radius: 18px 18px 8px 8px;
+
+    position: relative;
+
+    background:
+        linear-gradient(
+            to top,
+            #65a30d 0%,
+            #84cc16 45%,
+            #d9f99d 100%
+        );
+
+    box-shadow:
+        0 10px 30px rgba(132,204,22,0.22);
+
+    transition:
+        transform 0.25s ease,
+        opacity 0.25s ease,
+        height 0.35s ease;
+
+}
+
+.graph-bar:hover{
+
+    transform: translateY(-8px);
+
+}
+
+
+/* TOP SHINE */
+
+.graph-bar::before{
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    right: 0;
+
+    height: 35%;
+
+    border-radius: 18px 18px 0 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(255,255,255,0.24),
+            transparent
+        );
+
+}
+
+
+/* DAY LABEL */
+
+.graph-day{
+
+    font-size: 13px;
+
+    color: var(--muted);
+
+    font-weight: 600;
+
+    letter-spacing: 0.5px;
+
+}
+
+/* =========================
+   BOTTOM GRID
+========================= */
+
+.practice-bottom-grid{
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 22px;
+
+}
+
+
+/* =========================
+   COMMON CARDS
+========================= */
+
+.weak-keys-card,
+.practice-ai-card,
+.practice-badge-card,
+.practice-leaderboard{
+
+    background:
+        rgba(255,255,255,0.04);
+
+    border:
+        1px solid rgba(255,255,255,0.06);
+
+    border-radius: 30px;
+
+    padding: 28px;
+
+    backdrop-filter: blur(10px);
+
+}
+
+
+/* =========================
+   WEAK KEYS
+========================= */
+
+.weak-keys-card h3{
+
+    font-size: 28px;
+
+}
+
+.weak-key-list{
+
+    display: flex;
+
+    gap: 14px;
+
+    margin-top: 24px;
+
+}
+
+.weak-key{
+
+    width: 62px;
+
+    height: 62px;
+
+    border-radius: 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        rgba(239,68,68,0.18);
+
+    border:
+        1px solid rgba(239,68,68,0.35);
+
+    font-size: 24px;
+
+    font-weight: 700;
+
+}
+
+
+/* =========================
+   AI COACH
+========================= */
+
+.practice-ai-card h3{
+
+    font-size: 28px;
+
+}
+
+.practice-ai-card p{
+
+    margin-top: 20px;
+
+    line-height: 1.9;
+
+    color: #cbd5e1;
+
+    font-size: 17px;
+
+}
+
+
+/* =========================
+   BADGES
+========================= */
+
+.practice-badge-card h3{
+
+    font-size: 28px;
+
+}
+
+.badge-list{
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 14px;
+
+    margin-top: 22px;
+
+}
+
+.badge-item{
+
+    padding: 14px 18px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(132,204,22,0.18);
+
+    border:
+        1px solid rgba(132,204,22,0.35);
+
+    font-weight: 600;
+
+}
+
+
+/* =========================
+   LEADERBOARD
+========================= */
+
+.leaderboard-header{
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 18px;
+
+}
+
+.leaderboard-header h3{
+
+    font-size: 30px;
+
+}
+
+.leaderboard-header span{
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+}
+
+.leaderboard-user{
+
+    margin-top: 16px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 18px 20px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(255,255,255,0.05);
+
+    font-size: 18px;
+
+}
+
+
+/* =========================
+   RESULT MODAL
+========================= */
+
+.practice-result-overlay{
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(0,0,0,0.65);
+
+    backdrop-filter: blur(8px);
+
+    z-index: 999;
+
+}
+
+.practice-result-modal{
+
+    position: fixed;
+
+    top: 50%;
+
+    left: 50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    width: 520px;
+
+    background:
+        #111827;
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    border-radius: 36px;
+
+    padding: 38px;
+
+    z-index: 1000;
+
+}
+
+.practice-result-modal h2{
+
+    font-size: 38px;
+
+}
+
+.result-stats{
+
+    margin-top: 30px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 18px;
+
+}
+
+.result-box{
+
+    padding: 20px;
+
+    border-radius: 20px;
+
+    text-align: center;
+
+    background:
+        rgba(255,255,255,0.05);
+
+}
+
+.result-box span{
+
+    color: var(--muted);
+
+}
+
+.result-box h3{
+
+    margin-top: 10px;
+
+    font-size: 32px;
+
+}
+
+.result-buttons{
+
+    display: flex;
+
+    gap: 14px;
+
+    margin-top: 34px;
+
+}
+
+.retry-btn,
+.continue-btn{
+
+    flex: 1;
+
+    border: none;
+
+    padding: 16px;
+
+    border-radius: 18px;
+
+    cursor: pointer;
+
+    font-weight: 700;
+
+    font-size: 16px;
+
+}
+
+.retry-btn{
+
+    background:
+        rgba(255,255,255,0.08);
+
+    color: white;
+
+}
+
+.continue-btn{
+
+    background:
+        linear-gradient(
+            to right,
+            #84cc16,
+            #65a30d
+        );
+
+    color: white;
+
+}
+
+
+/* =========================
+   TYPING STATES
+========================= */
+
+.correct-char{
+
+    color: #84cc16;
+
+}
+
+.active-char{
+
+    position: relative;
+
+    color: white;
+
+}
+
+.active-char::after{
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: -6px;
+
+    width: 100%;
+
+    height: 3px;
+
+    border-radius: 20px;
+
+    background: #84cc16;
+
+}
+
+.wrong-char{
+
+    color: #ef4444;
+
+}
+
+
+/* =========================
+   UTILITIES
+========================= */
+
+.hidden{
+
+    display: none;
+
+}
+
+.focus-mode .practice-settings-bar,
+.focus-mode .practice-performance-section{
+
+    display: none;
+
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width: 1200px){
+
+    .practice-settings-bar{
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+    }
+
+    .practice-bottom-grid{
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .performance-top-grid{
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+@media(max-width: 900px){
+
+    .practice-page{
+
+        padding-left: 24px;
+
+        padding-right: 24px;
+
+    }
+
+    .practice-header{
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+    }
+
+    .practice-header h1{
+
+        font-size: 52px;
+
+    }
+
+    .practice-text{
+
+        font-size: 18px;
+
+    }
+
+    .practice-live-stats{
+
+        width: 100%;
+
+        overflow-x: auto;
+
+    }
+
+}
+
+@media(max-width: 700px){
+
+    .practice-box{
+
+        padding: 32px;
+
+    }
+
+    .practice-text{
+
+        font-size: 30px;
+
+        line-height: 1.8;
+
+    }
+
+    .practice-result-modal{
+
+        width: 92%;
+
+    }
+
+    .result-buttons{
+
+        flex-direction: column;
+
+    }
+
+}

@@ -1,0 +1,784 @@
+/* =========================================
+   EASYTYPING V2
+   GAMES ARCADE CSS
+   games.css
+========================================= */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+
+    font-family: "Poppins", sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #111827,
+            #0f172a,
+            #020617
+        );
+
+    color: white;
+
+    min-height: 100vh;
+
+}
+
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+.games-navbar{
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 80px;
+
+    padding: 0 30px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    z-index: 1000;
+
+    backdrop-filter: blur(14px);
+
+    background:
+        rgba(2,6,23,0.78);
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.08);
+
+}
+
+.nav-left{
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+}
+
+.back-btn{
+
+    padding: 12px 18px;
+
+    border-radius: 16px;
+
+    text-decoration: none;
+
+    color: white;
+
+    font-weight: 600;
+
+    background:
+        rgba(255,255,255,0.08);
+
+    transition: 0.3s;
+
+}
+
+.back-btn:hover{
+
+    transform:
+        translateY(-2px);
+
+}
+
+.nav-left h1{
+
+    font-size: 28px;
+
+}
+
+.nav-left p{
+
+    color: #94a3b8;
+
+    font-size: 14px;
+
+}
+
+.nav-right button{
+
+    border: none;
+
+    padding: 14px 22px;
+
+    border-radius: 18px;
+
+    cursor: pointer;
+
+    color: white;
+
+    font-weight: 700;
+
+    background:
+        linear-gradient(
+            to right,
+            #38bdf8,
+            #2563eb
+        );
+
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.games-page{
+
+    width: 100%;
+
+    padding-top: 110px;
+
+    padding-left: 30px;
+
+    padding-right: 30px;
+
+    padding-bottom: 40px;
+
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.arcade-hero{
+
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 50px;
+
+    border-radius: 36px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(56,189,248,0.16),
+            rgba(168,85,247,0.14),
+            rgba(239,68,68,0.12)
+        );
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    flex-wrap: wrap;
+
+}
+
+.hero-badge{
+
+    display: inline-block;
+
+    padding: 10px 16px;
+
+    border-radius: 999px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    background:
+        rgba(255,255,255,0.08);
+
+}
+
+.hero-content h1{
+
+    margin-top: 20px;
+
+    font-size: 60px;
+
+    line-height: 1.1;
+
+}
+
+.hero-content p{
+
+    margin-top: 18px;
+
+    max-width: 650px;
+
+    color: #cbd5e1;
+
+    line-height: 1.7;
+
+}
+
+.hero-stats{
+
+    display: flex;
+
+    gap: 18px;
+
+    flex-wrap: wrap;
+
+    align-items: center;
+
+}
+
+.hero-stat{
+
+    min-width: 140px;
+
+    padding: 24px;
+
+    border-radius: 26px;
+
+    background:
+        rgba(255,255,255,0.06);
+
+    backdrop-filter: blur(14px);
+
+}
+
+.hero-stat span{
+
+    color: #94a3b8;
+
+    font-size: 13px;
+
+}
+
+.hero-stat h2{
+
+    margin-top: 12px;
+
+    font-size: 34px;
+
+}
+
+
+/* =========================================
+   DASHBOARD
+========================================= */
+
+.dashboard-grid{
+
+    margin-top: 30px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(220px,1fr));
+
+    gap: 20px;
+
+}
+
+.dashboard-card{
+
+    padding: 28px;
+
+    border-radius: 30px;
+
+    background:
+        rgba(255,255,255,0.05);
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    backdrop-filter: blur(14px);
+
+}
+
+.dashboard-card span{
+
+    color: #94a3b8;
+
+}
+
+.dashboard-card h2{
+
+    margin-top: 12px;
+
+    font-size: 42px;
+
+}
+
+
+/* =========================================
+   GAME GRID
+========================================= */
+
+.games-grid{
+
+    margin-top: 40px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(340px,1fr));
+
+    gap: 28px;
+
+}
+
+
+/* =========================================
+   GAME CARD
+========================================= */
+
+.game-card{
+
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 34px;
+
+    border-radius: 34px;
+
+    background:
+        rgba(255,255,255,0.05);
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    transition: 0.35s;
+
+}
+
+.game-card:hover{
+
+    transform:
+        translateY(-8px);
+
+}
+
+.card-glow{
+
+    position: absolute;
+
+    width: 260px;
+
+    height: 260px;
+
+    border-radius: 50%;
+
+    top: -80px;
+
+    right: -80px;
+
+    opacity: 0.16;
+
+}
+
+.green-card .card-glow{
+
+    background:
+        #84cc16;
+
+}
+
+.blue-card .card-glow{
+
+    background:
+        #38bdf8;
+
+}
+
+.lime-card .card-glow{
+
+    background:
+        #bef264;
+
+}
+
+.purple-card .card-glow{
+
+    background:
+        #a855f7;
+
+}
+
+.red-card .card-glow{
+
+    background:
+        #ef4444;
+
+}
+
+.featured-card{
+
+    border:
+        1px solid rgba(239,68,68,0.28);
+
+}
+
+.featured-label{
+
+    position: absolute;
+
+    top: 20px;
+
+    right: 20px;
+
+    padding: 8px 14px;
+
+    border-radius: 999px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    background:
+        rgba(239,68,68,0.18);
+
+}
+
+.game-icon{
+
+    position: relative;
+
+    z-index: 2;
+
+    font-size: 72px;
+
+}
+
+.game-info{
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+.card-top{
+
+    margin-top: 24px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+.difficulty,
+.xp-badge{
+
+    padding: 8px 14px;
+
+    border-radius: 999px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+}
+
+.easy{
+
+    background:
+        rgba(34,197,94,0.16);
+
+}
+
+.medium{
+
+    background:
+        rgba(56,189,248,0.16);
+
+}
+
+.hard{
+
+    background:
+        rgba(249,115,22,0.18);
+
+}
+
+.extreme{
+
+    background:
+        rgba(239,68,68,0.18);
+
+}
+
+.xp-badge{
+
+    background:
+        rgba(255,255,255,0.08);
+
+}
+
+.game-info h2{
+
+    margin-top: 20px;
+
+    font-size: 36px;
+
+}
+
+.game-info p{
+
+    margin-top: 14px;
+
+    color: #cbd5e1;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================================
+   TAGS
+========================================= */
+
+.feature-tags{
+
+    margin-top: 22px;
+
+    display: flex;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+}
+
+.feature-tags span{
+
+    padding: 10px 14px;
+
+    border-radius: 999px;
+
+    font-size: 13px;
+
+    background:
+        rgba(255,255,255,0.06);
+
+}
+
+
+/* =========================================
+   PLAY BUTTON
+========================================= */
+
+.play-btn{
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-top: 28px;
+
+    width: 100%;
+
+    padding: 16px;
+
+    border-radius: 18px;
+
+    text-decoration: none;
+
+    color: white;
+
+    font-weight: 700;
+
+    transition: 0.3s;
+
+    background:
+        linear-gradient(
+            to right,
+            #38bdf8,
+            #2563eb
+        );
+
+}
+
+.play-btn:hover{
+
+    transform:
+        scale(1.02);
+
+}
+
+
+/* =========================================
+   ACHIEVEMENTS
+========================================= */
+
+.achievements-section{
+
+    margin-top: 60px;
+
+}
+
+.section-header h2{
+
+    font-size: 42px;
+
+}
+
+.section-header p{
+
+    margin-top: 10px;
+
+    color: #94a3b8;
+
+}
+
+.achievements-grid{
+
+    margin-top: 30px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(260px,1fr));
+
+    gap: 22px;
+
+}
+
+.achievement-card{
+
+    padding: 28px;
+
+    border-radius: 30px;
+
+    background:
+        rgba(255,255,255,0.05);
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    transition: 0.3s;
+
+}
+
+.achievement-card:hover{
+
+    transform:
+        translateY(-6px);
+
+}
+
+.achievement-icon{
+
+    font-size: 50px;
+
+}
+
+.achievement-card h3{
+
+    margin-top: 20px;
+
+    font-size: 28px;
+
+}
+
+.achievement-card p{
+
+    margin-top: 10px;
+
+    color: #94a3b8;
+
+    line-height: 1.6;
+
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.games-footer{
+
+    margin-top: 70px;
+
+    padding: 30px 0;
+
+    text-align: center;
+
+    color: #64748b;
+
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media(max-width: 900px){
+
+    .hero-content h1{
+
+        font-size: 44px;
+
+    }
+
+}
+
+@media(max-width: 700px){
+
+    .games-page{
+
+        padding-left: 18px;
+
+        padding-right: 18px;
+
+    }
+
+    .arcade-hero{
+
+        padding: 30px;
+
+    }
+
+    .hero-content h1{
+
+        font-size: 36px;
+
+    }
+
+    .game-info h2{
+
+        font-size: 30px;
+
+    }
+
+    .games-grid{
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+}

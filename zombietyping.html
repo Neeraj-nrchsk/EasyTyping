@@ -1,0 +1,477 @@
+<!-- =========================================
+     EASYTYPING V2
+     ZOMBIE TYPING
+     zombietyping.html
+========================================= -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Zombie Typing | EasyTyping
+    </title>
+
+    <!-- CSS -->
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+    <link
+        rel="stylesheet"
+        href="zombietyping.css">
+
+    <!-- FONT -->
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+
+
+    <!-- =========================================
+         NAVBAR
+    ========================================= -->
+
+    <nav class="zombie-navbar">
+
+        <div class="nav-left">
+
+            <a
+                href="games.html"
+                class="back-btn">
+
+                ← Arcade
+
+            </a>
+
+            <h1>
+
+                Zombie Typing
+
+            </h1>
+
+        </div>
+
+
+
+        <div class="nav-right">
+
+            <button id="pauseBtn">
+
+                Pause
+
+            </button>
+
+            <button id="restartBtn">
+
+                Restart
+
+            </button>
+
+        </div>
+
+    </nav>
+
+
+
+
+
+    <!-- =========================================
+         MAIN PAGE
+    ========================================= -->
+
+    <section class="zombie-page">
+
+
+
+        <!-- =========================================
+             TOP HUD
+        ========================================= -->
+
+        <div class="top-hud">
+
+            <div class="hud-pill">
+
+                <span>
+                    Score
+                </span>
+
+                <h2 id="score">
+                    0
+                </h2>
+
+            </div>
+
+            <div class="hud-pill">
+
+                <span>
+                    Lives
+                </span>
+
+                <h2 id="lives">
+                    5
+                </h2>
+
+            </div>
+
+            <div class="hud-pill">
+
+                <span>
+                    Wave
+                </span>
+
+                <h2 id="wave">
+                    1
+                </h2>
+
+            </div>
+
+            <div class="hud-pill">
+
+                <span>
+                    Combo
+                </span>
+
+                <h2 id="combo">
+                    x1
+                </h2>
+
+            </div>
+
+            <div class="hud-pill">
+
+                <span>
+                    Accuracy
+                </span>
+
+                <h2 id="accuracy">
+                    100%
+                </h2>
+
+            </div>
+
+            <div class="hud-pill">
+
+                <span>
+                    Zombies
+                </span>
+
+                <h2 id="zombiesLeft">
+                    0
+                </h2>
+
+            </div>
+
+        </div>
+
+
+
+
+
+        <!-- =========================================
+             GAME AREA
+        ========================================= -->
+
+        <div class="zombie-wrapper">
+
+
+
+            <!-- BACKGROUND FX -->
+
+            <div class="fog-layer"></div>
+
+            <div class="danger-glow"></div>
+
+
+
+            <!-- PLAYER -->
+
+            <div class="player-base">
+
+                <div class="player-gun"></div>
+
+            </div>
+
+
+
+            <!-- ZOMBIE FIELD -->
+
+            <div
+                class="zombie-field"
+                id="zombieField">
+
+            </div>
+
+
+
+            <!-- LIVE TYPING -->
+
+            <div class="typing-preview">
+
+                <span>
+                    Target Input
+                </span>
+
+                <h2 id="liveTyping">
+
+                    ...
+
+                </h2>
+
+            </div>
+
+
+
+            <!-- WAVE ALERT -->
+
+            <div
+                class="wave-popup hidden"
+                id="wavePopup">
+
+                WAVE 1
+
+            </div>
+
+
+
+            <!-- BOSS ALERT -->
+
+            <div
+                class="boss-popup hidden"
+                id="bossPopup">
+
+                BOSS ZOMBIE
+
+            </div>
+
+
+
+            <!-- COMBO -->
+
+            <div
+                class="combo-popup hidden"
+                id="comboPopup">
+
+                COMBO x5
+
+            </div>
+
+
+
+            <!-- DAMAGE -->
+
+            <div
+                class="damage-popup hidden"
+                id="damagePopup">
+
+                DAMAGE
+
+            </div>
+
+        </div>
+
+
+
+
+
+        <!-- =========================================
+             BOTTOM BAR
+        ========================================= -->
+
+        <div class="bottom-bar">
+
+
+
+            <div class="mini-stat">
+
+                <span>
+                    Kills
+                </span>
+
+                <strong id="kills">
+                    0
+                </strong>
+
+            </div>
+
+
+
+            <div class="mini-stat">
+
+                <span>
+                    Best Combo
+                </span>
+
+                <strong id="bestCombo">
+                    x1
+                </strong>
+
+            </div>
+
+
+
+            <div class="mini-stat">
+
+                <span>
+                    XP Earned
+                </span>
+
+                <strong id="earnedXP">
+                    +0
+                </strong>
+
+            </div>
+
+
+
+            <button id="focusBtn">
+
+                Focus Mode
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+
+
+    <!-- =========================================
+         GAME OVER MODAL
+    ========================================= -->
+
+    <div
+        class="game-over-overlay hidden"
+        id="gameOverOverlay">
+
+    </div>
+
+
+
+    <div
+        class="game-over-modal hidden"
+        id="gameOverModal">
+
+
+        <h1>
+
+            Survival Ended
+
+        </h1>
+
+        <p>
+
+            Zombie attack completed.
+
+        </p>
+
+
+
+        <div class="results-grid">
+
+
+            <div class="result-card">
+
+                <span>
+                    Final Score
+                </span>
+
+                <h2 id="finalScore">
+                    0
+                </h2>
+
+            </div>
+
+
+            <div class="result-card">
+
+                <span>
+                    Kills
+                </span>
+
+                <h2 id="finalKills">
+                    0
+                </h2>
+
+            </div>
+
+
+            <div class="result-card">
+
+                <span>
+                    Best Combo
+                </span>
+
+                <h2 id="finalCombo">
+                    x1
+                </h2>
+
+            </div>
+
+
+            <div class="result-card">
+
+                <span>
+                    Wave Reached
+                </span>
+
+                <h2 id="finalWave">
+                    1
+                </h2>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="modal-buttons">
+
+            <button id="playAgainBtn">
+
+                Play Again
+
+            </button>
+
+            <a
+                href="games.html"
+                class="back-btn-modal">
+
+                Back To Arcade
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- JS -->
+
+    <script src="zombietyping.js"></script>
+
+</body>
+
+</html>

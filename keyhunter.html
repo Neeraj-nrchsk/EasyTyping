@@ -1,0 +1,467 @@
+<!-- =========================================
+     EASYTYPING V2
+     KEY HUNTER
+     keyhunter.html
+========================================= -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Key Hunter | EasyTyping
+    </title>
+
+    <!-- CSS -->
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+    <link
+        rel="stylesheet"
+        href="keyhunter.css">
+
+    <!-- FONT -->
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+
+
+    <!-- =========================================
+         NAVBAR
+    ========================================= -->
+
+    <nav class="hunter-navbar">
+
+        <div class="nav-left">
+
+            <a
+                href="games.html"
+                class="back-btn">
+
+                ← Arcade
+
+            </a>
+
+            <h1>
+
+                Key Hunter
+
+            </h1>
+
+        </div>
+
+
+
+        <div class="nav-right">
+
+            <button id="pauseBtn">
+
+                Pause
+
+            </button>
+
+            <button id="restartBtn">
+
+                Restart
+
+            </button>
+
+        </div>
+
+    </nav>
+
+
+
+
+
+    <!-- =========================================
+         MAIN PAGE
+    ========================================= -->
+
+    <section class="hunter-page">
+
+
+
+        <!-- =========================================
+             TOP HUD
+        ========================================= -->
+
+        <div class="top-hud">
+
+            <div class="hud-pill">
+
+                <span>
+                    Score
+                </span>
+
+                <h2 id="score">
+                    0
+                </h2>
+
+            </div>
+
+            <div class="hud-pill">
+
+                <span>
+                    Combo
+                </span>
+
+                <h2 id="combo">
+                    x1
+                </h2>
+
+            </div>
+
+            <div class="hud-pill">
+
+                <span>
+                    Timer
+                </span>
+
+                <h2 id="timer">
+                    60
+                </h2>
+
+            </div>
+
+            <div class="hud-pill">
+
+                <span>
+                    Accuracy
+                </span>
+
+                <h2 id="accuracy">
+                    100%
+                </h2>
+
+            </div>
+
+            <div class="hud-pill">
+
+                <span>
+                    Reflex
+                </span>
+
+                <h2 id="reflex">
+                    0ms
+                </h2>
+
+            </div>
+
+            <div class="hud-pill">
+
+                <span>
+                    Level
+                </span>
+
+                <h2 id="level">
+                    1
+                </h2>
+
+            </div>
+
+        </div>
+
+
+
+
+
+        <!-- =========================================
+             GAME AREA
+        ========================================= -->
+
+        <div class="hunter-wrapper">
+
+
+
+            <!-- GLOW -->
+
+            <div class="hunter-glow"></div>
+
+
+
+            <!-- RINGS -->
+
+            <div class="ring ring-one"></div>
+
+            <div class="ring ring-two"></div>
+
+
+
+            <!-- TARGET KEY -->
+
+            <div class="target-key-container">
+
+                <div
+                    class="target-key"
+                    id="targetKey">
+
+                    A
+
+                </div>
+
+            </div>
+
+
+
+            <!-- TYPING FEEDBACK -->
+
+            <div class="typing-feedback">
+
+                <span>
+                    Last Input
+                </span>
+
+                <h2 id="lastInput">
+
+                    ...
+
+                </h2>
+
+            </div>
+
+
+
+            <!-- COMBO -->
+
+            <div
+                class="combo-popup hidden"
+                id="comboPopup">
+
+                COMBO x5
+
+            </div>
+
+
+
+            <!-- PERFECT -->
+
+            <div
+                class="perfect-popup hidden"
+                id="perfectPopup">
+
+                PERFECT
+
+            </div>
+
+
+
+            <!-- MISS -->
+
+            <div
+                class="miss-popup hidden"
+                id="missPopup">
+
+                MISS
+
+            </div>
+
+        </div>
+
+
+
+
+
+        <!-- =========================================
+             BOTTOM BAR
+        ========================================= -->
+
+        <div class="bottom-bar">
+
+
+
+            <div class="mini-stat">
+
+                <span>
+                    Best Combo
+                </span>
+
+                <strong id="bestCombo">
+                    x1
+                </strong>
+
+            </div>
+
+
+
+            <div class="mini-stat">
+
+                <span>
+                    Perfect Hits
+                </span>
+
+                <strong id="perfectHits">
+                    0
+                </strong>
+
+            </div>
+
+
+
+            <div class="mini-stat">
+
+                <span>
+                    XP Earned
+                </span>
+
+                <strong id="earnedXP">
+                    +0
+                </strong>
+
+            </div>
+
+
+
+            <button id="focusBtn">
+
+                Focus Mode
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+
+
+    <!-- =========================================
+         GAME OVER MODAL
+    ========================================= -->
+
+    <div
+        class="game-over-overlay hidden"
+        id="gameOverOverlay">
+
+    </div>
+
+
+
+    <div
+        class="game-over-modal hidden"
+        id="gameOverModal">
+
+
+        <h1>
+
+            Key Hunter Complete
+
+        </h1>
+
+        <p>
+
+            Reflex performance analyzed.
+
+        </p>
+
+
+
+        <div class="results-grid">
+
+
+            <div class="result-card">
+
+                <span>
+                    Final Score
+                </span>
+
+                <h2 id="finalScore">
+                    0
+                </h2>
+
+            </div>
+
+
+            <div class="result-card">
+
+                <span>
+                    Best Combo
+                </span>
+
+                <h2 id="finalCombo">
+                    x1
+                </h2>
+
+            </div>
+
+
+            <div class="result-card">
+
+                <span>
+                    Accuracy
+                </span>
+
+                <h2 id="finalAccuracy">
+                    100%
+                </h2>
+
+            </div>
+
+
+            <div class="result-card">
+
+                <span>
+                    Reflex
+                </span>
+
+                <h2 id="finalReflex">
+                    0ms
+                </h2>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="modal-buttons">
+
+            <button id="playAgainBtn">
+
+                Play Again
+
+            </button>
+
+            <a
+                href="games.html"
+                class="back-btn-modal">
+
+                Back To Arcade
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- JS -->
+
+    <script src="keyhunter.js"></script>
+
+</body>
+
+</html>

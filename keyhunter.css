@@ -1,0 +1,846 @@
+/* =========================================
+   EASYTYPING V2
+   KEY HUNTER CSS
+   keyhunter.css
+========================================= */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+
+    font-family: "Poppins", sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #111827,
+            #0f172a,
+            #020617
+        );
+
+    color: white;
+
+    overflow: hidden;
+
+}
+
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+.hunter-navbar{
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 80px;
+
+    padding: 0 28px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    z-index: 1000;
+
+    backdrop-filter: blur(14px);
+
+    background:
+        rgba(2,6,23,0.72);
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.08);
+
+}
+
+.nav-left{
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+}
+
+.back-btn{
+
+    padding: 12px 18px;
+
+    border-radius: 16px;
+
+    text-decoration: none;
+
+    color: white;
+
+    font-weight: 600;
+
+    background:
+        rgba(255,255,255,0.08);
+
+}
+
+.nav-left h1{
+
+    font-size: 30px;
+
+}
+
+.nav-right{
+
+    display: flex;
+
+    gap: 14px;
+
+}
+
+.nav-right button{
+
+    border: none;
+
+    padding: 12px 18px;
+
+    border-radius: 16px;
+
+    cursor: pointer;
+
+    font-weight: 700;
+
+    color: white;
+
+    background:
+        rgba(255,255,255,0.08);
+
+    transition: 0.3s;
+
+}
+
+.nav-right button:hover{
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.hunter-page{
+
+    width: 100%;
+
+    height: 100vh;
+
+    padding-top: 100px;
+
+    padding-left: 24px;
+
+    padding-right: 24px;
+
+    padding-bottom: 24px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+
+}
+
+
+/* =========================================
+   HUD
+========================================= */
+
+.top-hud{
+
+    display: flex;
+
+    gap: 14px;
+
+    flex-wrap: wrap;
+
+}
+
+.hud-pill{
+
+    min-width: 120px;
+
+    padding: 16px 18px;
+
+    border-radius: 22px;
+
+    background:
+        rgba(255,255,255,0.05);
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    backdrop-filter: blur(12px);
+
+}
+
+.hud-pill span{
+
+    color: #94a3b8;
+
+    font-size: 13px;
+
+}
+
+.hud-pill h2{
+
+    margin-top: 8px;
+
+    font-size: 32px;
+
+}
+
+
+/* =========================================
+   GAME AREA
+========================================= */
+
+.hunter-wrapper{
+
+    position: relative;
+
+    flex: 1;
+
+    overflow: hidden;
+
+    border-radius: 40px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        rgba(255,255,255,0.04);
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+}
+
+
+/* =========================================
+   GLOW
+========================================= */
+
+.hunter-glow{
+
+    position: absolute;
+
+    width: 700px;
+
+    height: 700px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(168,85,247,0.12),
+            transparent 70%
+        );
+
+    animation:
+        glowPulse 4s infinite;
+
+}
+
+@keyframes glowPulse{
+
+    0%{
+
+        transform:
+            scale(1);
+
+    }
+
+    50%{
+
+        transform:
+            scale(1.08);
+
+    }
+
+    100%{
+
+        transform:
+            scale(1);
+
+    }
+
+}
+
+
+/* =========================================
+   RINGS
+========================================= */
+
+.ring{
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    border:
+        1px solid rgba(168,85,247,0.15);
+
+    animation:
+        rotateRing linear infinite;
+
+}
+
+.ring-one{
+
+    width: 420px;
+
+    height: 420px;
+
+    animation-duration: 18s;
+
+}
+
+.ring-two{
+
+    width: 540px;
+
+    height: 540px;
+
+    animation-duration: 24s;
+
+}
+
+@keyframes rotateRing{
+
+    from{
+
+        transform:
+            rotate(0deg);
+
+    }
+
+    to{
+
+        transform:
+            rotate(360deg);
+
+    }
+
+}
+
+
+/* =========================================
+   TARGET KEY
+========================================= */
+
+.target-key-container{
+
+    position: relative;
+
+    z-index: 10;
+
+}
+
+.target-key{
+
+    width: 220px;
+
+    height: 220px;
+
+    border-radius: 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 120px;
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    background:
+        rgba(168,85,247,0.16);
+
+    border:
+        1px solid rgba(168,85,247,0.28);
+
+    box-shadow:
+        0 10px 40px rgba(168,85,247,0.18);
+
+    animation:
+        floatKey 2s ease infinite;
+
+}
+
+@keyframes floatKey{
+
+    0%{
+
+        transform:
+            translateY(0px);
+
+    }
+
+    50%{
+
+        transform:
+            translateY(-8px);
+
+    }
+
+    100%{
+
+        transform:
+            translateY(0px);
+
+    }
+
+}
+
+
+/* =========================================
+   TYPING FEEDBACK
+========================================= */
+
+.typing-feedback{
+
+    position: relative;
+
+    z-index: 10;
+
+    margin-top: 40px;
+
+    text-align: center;
+
+}
+
+.typing-feedback span{
+
+    color: #94a3b8;
+
+    font-size: 14px;
+
+}
+
+.typing-feedback h2{
+
+    margin-top: 10px;
+
+    font-size: 42px;
+
+    color: #a855f7;
+
+}
+
+
+/* =========================================
+   POPUPS
+========================================= */
+
+.combo-popup,
+.perfect-popup,
+.miss-popup{
+
+    position: absolute;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    padding: 16px 24px;
+
+    border-radius: 22px;
+
+    font-size: 28px;
+
+    font-weight: 700;
+
+    z-index: 50;
+
+    animation:
+        popupFX 0.8s ease;
+
+}
+
+.combo-popup{
+
+    top: 120px;
+
+    background:
+        rgba(168,85,247,0.18);
+
+}
+
+.perfect-popup{
+
+    top: 200px;
+
+    background:
+        rgba(56,189,248,0.18);
+
+}
+
+.miss-popup{
+
+    top: 280px;
+
+    background:
+        rgba(239,68,68,0.18);
+
+}
+
+@keyframes popupFX{
+
+    from{
+
+        opacity: 0;
+
+        transform:
+            translateX(-50%)
+            scale(0.7);
+
+    }
+
+    to{
+
+        opacity: 1;
+
+        transform:
+            translateX(-50%)
+            scale(1);
+
+    }
+
+}
+
+
+/* =========================================
+   BOTTOM BAR
+========================================= */
+
+.bottom-bar{
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 16px;
+
+    flex-wrap: wrap;
+
+}
+
+.mini-stat{
+
+    padding: 16px 22px;
+
+    border-radius: 22px;
+
+    background:
+        rgba(255,255,255,0.05);
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+}
+
+.mini-stat span{
+
+    color: #94a3b8;
+
+    font-size: 13px;
+
+}
+
+.mini-stat strong{
+
+    display: block;
+
+    margin-top: 6px;
+
+    font-size: 24px;
+
+}
+
+#focusBtn{
+
+    border: none;
+
+    padding: 16px 24px;
+
+    border-radius: 20px;
+
+    cursor: pointer;
+
+    font-weight: 700;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            to right,
+            #a855f7,
+            #7e22ce
+        );
+
+}
+
+
+/* =========================================
+   MODAL
+========================================= */
+
+.game-over-overlay{
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(0,0,0,0.7);
+
+    backdrop-filter: blur(8px);
+
+    z-index: 999;
+
+}
+
+.game-over-modal{
+
+    position: fixed;
+
+    top: 50%;
+
+    left: 50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    width: 600px;
+
+    max-width: 92%;
+
+    padding: 36px;
+
+    border-radius: 34px;
+
+    text-align: center;
+
+    z-index: 1000;
+
+    background:
+        #0f172a;
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+}
+
+.game-over-modal h1{
+
+    font-size: 46px;
+
+}
+
+.game-over-modal p{
+
+    margin-top: 10px;
+
+    color: #94a3b8;
+
+}
+
+.results-grid{
+
+    margin-top: 30px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap: 18px;
+
+}
+
+.result-card{
+
+    padding: 22px;
+
+    border-radius: 24px;
+
+    background:
+        rgba(255,255,255,0.05);
+
+}
+
+.result-card span{
+
+    color: #94a3b8;
+
+}
+
+.result-card h2{
+
+    margin-top: 10px;
+
+    font-size: 38px;
+
+}
+
+.modal-buttons{
+
+    margin-top: 28px;
+
+    display: flex;
+
+    gap: 16px;
+
+}
+
+.modal-buttons button,
+.back-btn-modal{
+
+    flex: 1;
+
+    border: none;
+
+    padding: 16px;
+
+    border-radius: 18px;
+
+    cursor: pointer;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+}
+
+#playAgainBtn{
+
+    background:
+        linear-gradient(
+            to right,
+            #a855f7,
+            #7e22ce
+        );
+
+    color: white;
+
+}
+
+.back-btn-modal{
+
+    background:
+        rgba(255,255,255,0.08);
+
+    color: white;
+
+}
+
+
+/* =========================================
+   UTILITIES
+========================================= */
+
+.hidden{
+
+    display: none;
+
+}
+
+.focus-mode .top-hud,
+.focus-mode .bottom-bar{
+
+    opacity: 0.08;
+
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media(max-width: 900px){
+
+    .top-hud{
+
+        overflow-x: auto;
+
+        flex-wrap: nowrap;
+
+    }
+
+    .target-key{
+
+        width: 180px;
+
+        height: 180px;
+
+        font-size: 90px;
+
+    }
+
+}
+
+@media(max-width: 600px){
+
+    .target-key{
+
+        width: 140px;
+
+        height: 140px;
+
+        font-size: 70px;
+
+    }
+
+    .typing-feedback h2{
+
+        font-size: 30px;
+
+    }
+
+    .results-grid{
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+    .modal-buttons{
+
+        flex-direction: column;
+
+    }
+
+}

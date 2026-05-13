@@ -1,0 +1,738 @@
+<!-- =========================================
+     EASYTYPING V2
+     GAMES ARCADE HUB
+     games.html
+========================================= -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        EasyTyping Arcade
+    </title>
+
+    <!-- CSS -->
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+    <link
+        rel="stylesheet"
+        href="games.css">
+
+    <!-- FONT -->
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+
+
+    <!-- =========================================
+         NAVBAR
+    ========================================= -->
+
+    <nav class="games-navbar">
+
+        <div class="nav-left">
+
+            <a
+                href="index.html"
+                class="back-btn">
+
+                ← Dashboard
+
+            </a>
+
+            <div>
+
+                <h1>
+
+                    EasyTyping Arcade
+
+                </h1>
+
+                <p>
+
+                    Competitive Typing Games
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="nav-right">
+
+            <button id="themeToggle">
+
+                Theme
+
+            </button>
+
+        </div>
+
+    </nav>
+
+
+
+
+
+    <!-- =========================================
+         MAIN PAGE
+    ========================================= -->
+
+    <section class="games-page">
+
+
+
+        <!-- =========================================
+             HERO
+        ========================================= -->
+
+        <div class="arcade-hero">
+
+            <div class="hero-content">
+
+                <span class="hero-badge">
+
+                    EASYTYPING V2
+
+                </span>
+
+                <h1>
+
+                    Typing Arcade Arena
+
+                </h1>
+
+                <p>
+
+                    Train speed, accuracy, reflexes and survival typing skills through immersive arcade games.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="hero-stats">
+
+                <div class="hero-stat">
+
+                    <span>
+                        Total Games
+                    </span>
+
+                    <h2>
+                        5
+                    </h2>
+
+                </div>
+
+                <div class="hero-stat">
+
+                    <span>
+                        XP System
+                    </span>
+
+                    <h2>
+                        Active
+                    </h2>
+
+                </div>
+
+                <div class="hero-stat">
+
+                    <span>
+                        Difficulty
+                    </span>
+
+                    <h2>
+                        Progressive
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+
+        <!-- =========================================
+             QUICK STATS
+        ========================================= -->
+
+        <div class="dashboard-grid">
+
+            <div class="dashboard-card">
+
+                <span>
+                    Total XP
+                </span>
+
+                <h2 id="totalXP">
+                    0
+                </h2>
+
+            </div>
+
+            <div class="dashboard-card">
+
+                <span>
+                    Best Combo
+                </span>
+
+                <h2 id="bestCombo">
+                    x0
+                </h2>
+
+            </div>
+
+            <div class="dashboard-card">
+
+                <span>
+                    Highest Wave
+                </span>
+
+                <h2 id="highestWave">
+                    0
+                </h2>
+
+            </div>
+
+            <div class="dashboard-card">
+
+                <span>
+                    Games Played
+                </span>
+
+                <h2 id="gamesPlayed">
+                    0
+                </h2>
+
+            </div>
+
+        </div>
+
+
+
+
+
+        <!-- =========================================
+             GAME GRID
+        ========================================= -->
+
+        <div class="games-grid">
+
+
+
+            <!-- FALLING WORDS -->
+
+            <div class="game-card green-card">
+
+                <div class="card-glow"></div>
+
+                <div class="game-icon">
+
+                    🌧️
+
+                </div>
+
+                <div class="game-info">
+
+                    <div class="card-top">
+
+                        <span class="difficulty medium">
+
+                            Medium
+
+                        </span>
+
+                        <span class="xp-badge">
+
+                            +150 XP
+
+                        </span>
+
+                    </div>
+
+                    <h2>
+
+                        Falling Words
+
+                    </h2>
+
+                    <p>
+
+                        Destroy falling words before they reach the bottom.
+
+                    </p>
+
+                    <div class="feature-tags">
+
+                        <span>Combo</span>
+                        <span>WPM</span>
+                        <span>Levels</span>
+
+                    </div>
+
+                    <a
+                        href="fallingwords.html"
+                        class="play-btn">
+
+                        Play Now
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+
+
+            <!-- SPEED BURST -->
+
+            <div class="game-card blue-card">
+
+                <div class="card-glow"></div>
+
+                <div class="game-icon">
+
+                    ⚡
+
+                </div>
+
+                <div class="game-info">
+
+                    <div class="card-top">
+
+                        <span class="difficulty hard">
+
+                            Hard
+
+                        </span>
+
+                        <span class="xp-badge">
+
+                            +200 XP
+
+                        </span>
+
+                    </div>
+
+                    <h2>
+
+                        Speed Burst
+
+                    </h2>
+
+                    <p>
+
+                        Fast reaction typing challenge with rapid word switching.
+
+                    </p>
+
+                    <div class="feature-tags">
+
+                        <span>Reaction</span>
+                        <span>Speed</span>
+                        <span>Combo</span>
+
+                    </div>
+
+                    <a
+                        href="speedburst.html"
+                        class="play-btn">
+
+                        Play Now
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+
+
+            <!-- ACCURACY RUSH -->
+
+            <div class="game-card lime-card">
+
+                <div class="card-glow"></div>
+
+                <div class="game-icon">
+
+                    🎯
+
+                </div>
+
+                <div class="game-info">
+
+                    <div class="card-top">
+
+                        <span class="difficulty easy">
+
+                            Easy
+
+                        </span>
+
+                        <span class="xp-badge">
+
+                            +180 XP
+
+                        </span>
+
+                    </div>
+
+                    <h2>
+
+                        Accuracy Rush
+
+                    </h2>
+
+                    <p>
+
+                        Precision-focused typing game with grading system.
+
+                    </p>
+
+                    <div class="feature-tags">
+
+                        <span>Accuracy</span>
+                        <span>Grades</span>
+                        <span>Focus</span>
+
+                    </div>
+
+                    <a
+                        href="accuracyrush.html"
+                        class="play-btn">
+
+                        Play Now
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+
+
+            <!-- KEY HUNTER -->
+
+            <div class="game-card purple-card">
+
+                <div class="card-glow"></div>
+
+                <div class="game-icon">
+
+                    ⌨️
+
+                </div>
+
+                <div class="game-info">
+
+                    <div class="card-top">
+
+                        <span class="difficulty medium">
+
+                            Medium
+
+                        </span>
+
+                        <span class="xp-badge">
+
+                            +220 XP
+
+                        </span>
+
+                    </div>
+
+                    <h2>
+
+                        Key Hunter
+
+                    </h2>
+
+                    <p>
+
+                        Reflex-heavy keyboard reaction arcade experience.
+
+                    </p>
+
+                    <div class="feature-tags">
+
+                        <span>Reflex</span>
+                        <span>Keys</span>
+                        <span>Arcade</span>
+
+                    </div>
+
+                    <a
+                        href="keyhunter.html"
+                        class="play-btn">
+
+                        Play Now
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+
+
+            <!-- ZOMBIE TYPING -->
+
+            <div class="game-card red-card featured-card">
+
+                <div class="featured-label">
+
+                    BEST GAME
+
+                </div>
+
+                <div class="card-glow"></div>
+
+                <div class="game-icon">
+
+                    🧟
+
+                </div>
+
+                <div class="game-info">
+
+                    <div class="card-top">
+
+                        <span class="difficulty extreme">
+
+                            Extreme
+
+                        </span>
+
+                        <span class="xp-badge">
+
+                            +500 XP
+
+                        </span>
+
+                    </div>
+
+                    <h2>
+
+                        Zombie Typing
+
+                    </h2>
+
+                    <p>
+
+                        Survival typing shooter with waves, bosses and intense action.
+
+                    </p>
+
+                    <div class="feature-tags">
+
+                        <span>Bosses</span>
+                        <span>Waves</span>
+                        <span>Survival</span>
+
+                    </div>
+
+                    <a
+                        href="zombietyping.html"
+                        class="play-btn">
+
+                        Play Now
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+
+        <!-- =========================================
+             ACHIEVEMENTS
+        ========================================= -->
+
+        <div class="achievements-section">
+
+            <div class="section-header">
+
+                <h2>
+
+                    Achievements
+
+                </h2>
+
+                <p>
+
+                    Unlock arcade milestones
+
+                </p>
+
+            </div>
+
+
+
+            <div class="achievements-grid">
+
+                <div class="achievement-card">
+
+                    <div class="achievement-icon">
+
+                        🩸
+
+                    </div>
+
+                    <h3>
+
+                        First Blood
+
+                    </h3>
+
+                    <p>
+
+                        Kill your first zombie
+
+                    </p>
+
+                </div>
+
+                <div class="achievement-card">
+
+                    <div class="achievement-icon">
+
+                        ⚡
+
+                    </div>
+
+                    <h3>
+
+                        Speed Demon
+
+                    </h3>
+
+                    <p>
+
+                        Reach 100+ WPM
+
+                    </p>
+
+                </div>
+
+                <div class="achievement-card">
+
+                    <div class="achievement-icon">
+
+                        🎯
+
+                    </div>
+
+                    <h3>
+
+                        Accuracy King
+
+                    </h3>
+
+                    <p>
+
+                        Maintain 98% accuracy
+
+                    </p>
+
+                </div>
+
+                <div class="achievement-card">
+
+                    <div class="achievement-icon">
+
+                        👑
+
+                    </div>
+
+                    <h3>
+
+                        Combo Master
+
+                    </h3>
+
+                    <p>
+
+                        Reach x50 combo
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+
+        <!-- =========================================
+             FOOTER
+        ========================================= -->
+
+        <footer class="games-footer">
+
+            <p>
+
+                EasyTyping Arcade V2 • Built for immersive typing gameplay
+
+            </p>
+
+        </footer>
+
+    </section>
+
+
+
+    <!-- JS -->
+
+    <script src="games.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,482 @@
+<!-- =========================================
+     EASYTYPING V2
+     FALLING WORDS GAME
+     fallingwords.html
+========================================= -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Falling Words | EasyTyping
+    </title>
+
+    <!-- CSS -->
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+    <link
+        rel="stylesheet"
+        href="fallingwords.css">
+
+    <!-- FONT -->
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+
+
+    <!-- =========================================
+         NAVBAR
+    ========================================= -->
+
+    <nav class="game-navbar">
+
+        <div class="nav-left">
+
+            <a
+                href="games.html"
+                class="back-btn">
+
+                ← Arcade
+
+            </a>
+
+            <h1>
+
+                Falling Words
+
+            </h1>
+
+        </div>
+
+
+
+        <div class="nav-right">
+
+            <button id="pauseBtn">
+
+                Pause
+
+            </button>
+
+            <button id="restartBtn">
+
+                Restart
+
+            </button>
+
+        </div>
+
+    </nav>
+
+
+
+
+
+    <!-- =========================================
+         MAIN GAME
+    ========================================= -->
+
+    <section class="falling-game-page">
+
+
+
+        <!-- =========================================
+             TOP HUD
+        ========================================= -->
+
+        <div class="top-hud">
+
+
+
+            <div class="hud-pill">
+
+                <span>
+                    Score
+                </span>
+
+                <h2 id="score">
+                    0
+                </h2>
+
+            </div>
+
+
+
+            <div class="hud-pill">
+
+                <span>
+                    Combo
+                </span>
+
+                <h2 id="combo">
+                    x1
+                </h2>
+
+            </div>
+
+
+
+            <div class="hud-pill">
+
+                <span>
+                    Lives
+                </span>
+
+                <h2 id="lives">
+                    5
+                </h2>
+
+            </div>
+
+
+
+            <div class="hud-pill">
+
+                <span>
+                    Level
+                </span>
+
+                <h2 id="level">
+                    1
+                </h2>
+
+            </div>
+
+
+
+            <div class="hud-pill">
+
+                <span>
+                    WPM
+                </span>
+
+                <h2 id="wpm">
+                    0
+                </h2>
+
+            </div>
+
+
+
+            <div class="hud-pill">
+
+                <span>
+                    Accuracy
+                </span>
+
+                <h2 id="accuracy">
+                    100%
+                </h2>
+
+            </div>
+
+        </div>
+
+
+
+
+
+        <!-- =========================================
+             GAME AREA
+        ========================================= -->
+
+        <div class="game-wrapper">
+
+
+
+            <!-- BACKGROUND FX -->
+
+            <div class="background-glow"></div>
+
+
+
+            <!-- GAME FIELD -->
+
+            <div
+                class="game-field"
+                id="gameField">
+
+
+
+                <!-- PARTICLES -->
+
+                <div
+                    id="particleContainer">
+
+                </div>
+
+
+
+                <!-- COMBO FX -->
+
+                <div
+                    class="combo-popup hidden"
+                    id="comboPopup">
+
+                    COMBO x5
+
+                </div>
+
+
+
+                <!-- LEVEL UP -->
+
+                <div
+                    class="level-popup hidden"
+                    id="levelPopup">
+
+                    LEVEL UP
+
+                </div>
+
+
+
+                <!-- BOSS -->
+
+                <div
+                    class="boss-warning hidden"
+                    id="bossWarning">
+
+                    BOSS ROUND
+
+                </div>
+
+            </div>
+
+
+
+
+
+            <!-- =========================================
+                 TYPING PREVIEW
+            ========================================= -->
+
+            <div class="typing-preview">
+
+                <span>
+                    Typing :
+                </span>
+
+                <h2 id="liveTyping">
+
+                    ...
+
+                </h2>
+
+            </div>
+
+        </div>
+
+
+
+
+
+        <!-- =========================================
+             BOTTOM BAR
+        ========================================= -->
+
+        <div class="bottom-bar">
+
+
+
+            <div class="bottom-left">
+
+                <div class="mini-stat">
+
+                    <span>
+                        Best Combo
+                    </span>
+
+                    <strong id="bestCombo">
+                        x1
+                    </strong>
+
+                </div>
+
+                <div class="mini-stat">
+
+                    <span>
+                        XP Earned
+                    </span>
+
+                    <strong id="earnedXP">
+                        +0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="bottom-center">
+
+                <div class="game-tip">
+
+                    Type falling words before they hit the bottom.
+
+                </div>
+
+            </div>
+
+
+
+            <div class="bottom-right">
+
+                <button id="focusBtn">
+
+                    Focus Mode
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+
+
+    <!-- =========================================
+         GAME OVER MODAL
+    ========================================= -->
+
+    <div
+        class="game-over-overlay hidden"
+        id="gameOverOverlay">
+
+    </div>
+
+
+
+    <div
+        class="game-over-modal hidden"
+        id="gameOverModal">
+
+
+        <h1>
+
+            Game Over
+
+        </h1>
+
+        <p>
+
+            Great reaction speed.
+
+        </p>
+
+
+
+        <div class="result-grid">
+
+
+            <div class="result-card">
+
+                <span>
+                    Final Score
+                </span>
+
+                <h2 id="finalScore">
+                    0
+                </h2>
+
+            </div>
+
+
+            <div class="result-card">
+
+                <span>
+                    Best Combo
+                </span>
+
+                <h2 id="finalBestCombo">
+                    x1
+                </h2>
+
+            </div>
+
+
+            <div class="result-card">
+
+                <span>
+                    WPM
+                </span>
+
+                <h2 id="finalWPM">
+                    0
+                </h2>
+
+            </div>
+
+
+            <div class="result-card">
+
+                <span>
+                    Accuracy
+                </span>
+
+                <h2 id="finalAccuracy">
+                    100%
+                </h2>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="modal-buttons">
+
+            <button id="playAgainBtn">
+
+                Play Again
+
+            </button>
+
+            <a
+                href="games.html"
+                class="back-arcade-btn">
+
+                Back To Arcade
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- JS -->
+
+    <script src="fallingwords.js"></script>
+
+</body>
+
+</html>

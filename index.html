@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>EasyTyping V2</title>
+
+    <!-- Google Font -->
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet"
+        href="style.css">
+
+    <!-- Favicon -->
+
+    <link rel="icon"
+        type="image/png"
+        href="favicon.png">
+
+</head>
+
+<body>
+
+    <!-- ========================= -->
+    <!-- Navbar -->
+    <!-- ========================= -->
+
+    <nav>
+
+        <h1 class="logo">
+
+            <a href="index.html">
+                EasyTyping
+            </a>
+
+        </h1>
+
+
+        <!-- Navigation Links -->
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="learn.html">
+                    Learn
+                </a>
+            </li>
+
+            <li>
+                <a href="practice.html">
+                    Practice
+                </a>
+            </li>
+
+            <li>
+                <a href="analytics.html">
+                    Analytics
+                </a>
+            </li>
+
+            <li>
+                <a href="profile.html">
+                    Profile
+                </a>
+            </li>
+
+            <li>
+                <a href="games.html">
+                    Games
+                </a>
+            </li>
+
+        </ul>
+
+
+        <!-- Right Buttons -->
+
+        <div class="nav-buttons">
+
+            <button class="theme-btn"
+                id="theme-btn">
+                🌙
+            </button>
+
+            <button class="sound-btn"
+                id="sound-btn">
+                🔊
+            </button>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- ========================= -->
+    <!-- Hero Section -->
+    <!-- ========================= -->
+
+    <section class="hero-section">
+
+        <div class="hero-content">
+
+            <h2>
+                Your Complete Touch Typing
+                Learning Platform
+            </h2>
+
+            <p class="hero-text">
+                Learn, practice, analyze,
+                and improve your typing speed
+                with structured courses and
+                real-time feedback.
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <a href="learn.html"
+                    class="primary-btn">
+                    Start Learning
+                </a>
+
+                <a href="practice.html"
+                    class="secondary-btn">
+                    Practice Now
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ========================= -->
+    <!-- Main Dashboard -->
+    <!-- ========================= -->
+
+    <section class="dashboard-section">
+
+        <div class="dashboard-card">
+
+            <h3>🔥 Daily Streak</h3>
+
+            <p id="streak-count">
+                0 Days
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <h3>⭐ XP Points</h3>
+
+            <p id="xp-count">
+                0 XP
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <h3>🏆 Current Level</h3>
+
+            <p id="level-count">
+                Level 1
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <h3>⚡ Best WPM</h3>
+
+            <p id="best-wpm">
+                0
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <h3>✅ Lessons Completed</h3>
+
+            <p id="completed-count">
+                0
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ========================= -->
+    <!-- Daily Goals -->
+    <!-- ========================= -->
+
+    <section class="daily-goals-section">
+
+        <h2 class="section-title">
+            Daily Goals
+        </h2>
+
+        <div class="daily-goals-container">
+
+            <div class="goal-card">
+
+                <h3>⌛ Practice Time</h3>
+
+                <p>
+                    Practice for 15 minutes.
+                </p>
+
+                <span>
+                    In Progress
+                </span>
+
+            </div>
+
+
+            <div class="goal-card">
+
+                <h3>🎯 Accuracy Goal</h3>
+
+                <p>
+                    Reach 95% Accuracy.
+                </p>
+
+                <span>
+                    In Progress
+                </span>
+
+            </div>
+
+
+            <div class="goal-card">
+
+                <h3>📚 Lesson Goal</h3>
+
+                <p>
+                    Complete 3 lessons.
+                </p>
+
+                <span>
+                    In Progress
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ========================= -->
+    <!-- Roadmap Preview -->
+    <!-- ========================= -->
+
+    <section class="roadmap-preview-section">
+
+        <h2 class="section-title">
+            26-Day Typing Roadmap
+        </h2>
+
+
+        <div class="roadmap-nav">
+
+            <button class="roadmap-day active-roadmap-day">
+                Day 1
+            </button>
+
+            <button class="roadmap-day">
+                Day 2
+            </button>
+
+            <button class="roadmap-day">
+                Day 3
+            </button>
+
+            <button class="roadmap-day">
+                Day 4
+            </button>
+
+            <button class="roadmap-day">
+                Day 5
+            </button>
+
+            <button class="roadmap-day locked-roadmap-day">
+                Day 6
+            </button>
+
+            <button class="roadmap-day locked-roadmap-day">
+                Day 7
+            </button>
+
+            <button class="roadmap-day locked-roadmap-day">
+                Day 8
+            </button>
+
+            <button class="roadmap-day locked-roadmap-day">
+                Day 9
+            </button>
+
+            <button class="roadmap-day locked-roadmap-day">
+                Day 10
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ========================= -->
+    <!-- Features Section -->
+    <!-- ========================= -->
+
+    <section class="features-section">
+
+        <h2 class="section-title">
+            Platform Features
+        </h2>
+
+        <div class="features-container">
+
+            <div class="feature-card">
+
+                <h3>
+                    📚 Structured Learning
+                </h3>
+
+                <p>
+                    Follow a complete
+                    26-day touch typing roadmap.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <h3>
+                    ⌨️ Interactive Keyboard
+                </h3>
+
+                <p>
+                    Learn touch typing using
+                    real-time keyboard guidance.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <h3>
+                    📈 Smart Analytics
+                </h3>
+
+                <p>
+                    Track WPM, accuracy,
+                    weak keys, and progress.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <h3>
+                    🏆 Gamification
+                </h3>
+
+                <p>
+                    Earn XP, streaks,
+                    badges, and levels.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ========================= -->
+    <!-- Achievement Section -->
+    <!-- ========================= -->
+
+    <section class="achievement-section">
+
+        <h2 class="section-title">
+            Achievements
+        </h2>
+
+        <div class="achievement-container">
+
+            <div class="achievement-card">
+                🥉 Beginner Typist
+            </div>
+
+            <div class="achievement-card">
+                🔥 3 Day Streak
+            </div>
+
+            <div class="achievement-card">
+                🎯 Accuracy Master
+            </div>
+
+            <div class="achievement-card">
+                ⚡ 40 WPM Club
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ========================= -->
+    <!-- CTA Section -->
+    <!-- ========================= -->
+
+    <section class="cta-section">
+
+        <h2>
+            Start Your 26-Day
+            Typing Journey Today
+        </h2>
+
+        <p>
+            Become faster, more accurate,
+            and more confident every day.
+        </p>
+
+        <a href="learn.html"
+            class="cta-btn">
+            Begin Course
+        </a>
+
+    </section>
+
+
+
+    <!-- ========================= -->
+    <!-- JavaScript -->
+    <!-- ========================= -->
+
+    <script src="script.js"></script>
+
+</body>
+</html>
