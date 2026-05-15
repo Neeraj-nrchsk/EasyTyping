@@ -42,9 +42,10 @@ body{
 
   color: var(--text);
 
-  min-height: 100vh;
+  min-height: calc(100dvh - 92px);
 
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 /* ========================= */
@@ -192,7 +193,7 @@ body{
 
     margin-top: 92px !important;
 
-    height: calc(100vh - 92px) !important;
+    min-height: calc(100dvh - 92px);
 
 }
 
@@ -207,7 +208,7 @@ body{
     1fr
     230px;
 
-  height: calc(100vh - 92px);
+    min-height: calc(100dvh - 92px);
 
     margin-top: 92px;
 
@@ -215,7 +216,8 @@ body{
 
   padding: 10px;
 
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 /* ── LEFT SIDEBAR ── */
@@ -402,7 +404,8 @@ body{
 .trainer-section{
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   background: #161b22;
   border-right: 1px solid var(--border);
 }
@@ -757,3 +760,186 @@ body{
 
 ::-webkit-scrollbar{ width: 5px; height: 5px; }
 ::-webkit-scrollbar-thumb{ background: rgba(255,255,255,0.08); border-radius: 999px; }
+
+@media(max-width:1200px){
+
+  .main-layout{
+    grid-template-columns: 220px 1fr;
+  }
+
+  .right-panel{
+    display:none;
+  }
+
+}
+
+@media(max-width:992px){
+
+  .main-layout{
+    grid-template-columns: 1fr;
+  }
+
+  .lessons-sidebar{
+    position: fixed;
+    left: -280px;
+    top: 92px;
+    width: 260px;
+    height: calc(100dvh - 92px);
+    z-index: 1000;
+    transition: left 0.3s ease;
+  }
+
+  .lessons-sidebar.active{
+    left: 0;
+  }
+
+  .trainer-section{
+    width:100%;
+  }
+
+}
+
+@media(max-width:768px){
+
+  .trainer-section{
+    padding:16px;
+  }
+
+  .typing-text{
+    font-size:22px;
+    line-height:1.8;
+  }
+
+  .keyboard{
+    gap:6px;
+  }
+
+  .key{
+
+    min-width: clamp(22px, 4vw, 46px);
+
+    height: clamp(22px, 4vw, 46px);
+
+    padding: 4px;
+
+    border-radius: 8px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: clamp(8px, 1vw, 14px);
+
+    flex-shrink: 0;
+
+  }
+
+}
+
+@media(max-width:480px){
+
+  .trainer-section{
+    padding:12px;
+  }
+
+  .typing-text{
+    font-size:18px;
+    line-height:1.7;
+  }
+
+  .keyboard{
+    gap:4px;
+  }
+
+  .keyboard-row{
+    gap:4px;
+  }
+
+  .space-key{
+    min-width:120px;
+  }
+
+  .key{
+    min-width:28px;
+    height:28px;
+    font-size:10px;
+    border-radius:6px;
+  }
+
+}
+
+@media(max-width:390px){
+
+  .typing-text{
+    font-size:16px;
+  }
+
+  .key{
+    min-width:24px;
+    height:24px;
+    font-size:9px;
+  }
+
+}
+
+@media(max-width:320px){
+
+  .trainer-section{
+    padding:8px;
+  }
+
+  .typing-text{
+    font-size:15px;
+  }
+
+  .key{
+    min-width:22px;
+    height:22px;
+    font-size:8px;
+  }
+
+}
+
+/* three lines lessons navbar */
+
+.menu-toggle{
+
+  position: fixed;
+
+  top: 105px;
+
+  left: 16px;
+
+  width: 42px;
+
+  height: 42px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: #238636;
+
+  color: white;
+
+  font-size: 22px;
+
+  cursor: pointer;
+
+  z-index: 1200;
+
+  display: none;
+
+}
+
+@media(max-width:992px){
+
+  .menu-toggle{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+}

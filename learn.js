@@ -1,215 +1,241 @@
-// ── DATA ──
-const LESSONS_PREVIEW = [
-  { id:1, title:"The Home Row",     unlocked: true  },
-  { id:2, title:"Keys E and I",     unlocked: false },
-  { id:3, title:"Keys R and U",     unlocked: false },
-  { id:4, title:"Keys T and O",     unlocked: false },
-  { id:5, title:"Capital & Period", unlocked: false },
-  { id:6, title:"Keys C and Comma", unlocked: false },
-  { id:7, title:"Keys G H and '",   unlocked: false },
-  { id:8, title:"Keys V N and ?",   unlocked: false },
-];
+// ========================================
+// learn.js – Full 26‑Lesson Course Engine
+// Version 2.0
+// ========================================
 
-const LESSON_TEXT = "asdf jkl; asdf jkl; aaa sss ddd fff jjj kkk lll ;;";
+import { UserData } from '../userData.js';
+import { checkAllAchievements } from '../achievements.js';
+import { LEARN_CONTENT } from './learnContent.js';
 
-// ── STATE ──
-let currentIndex  = 0;
-let mistakes      = 0;
-let totalTyped    = 0;
-let correctTyped  = 0;
-let isCompleted   = false;
-let typingStarted = false;
-let totalSeconds  = 240;
-let timerInterval = null;
-
-// ── ELEMENTS ──
-const hiddenInput   = document.getElementById('hidden-input');
-const timerEl       = document.getElementById('timer');
-const xpEl          = document.getElementById('xp-amount');
-const trainerCard   = document.getElementById('trainer-card');
+// ----- DOM Elements -----
+const lessonTitle = document.getElementById('lesson-num-label');
+const subLessonTitle = document.getElementById('sub-lesson-title');
+const objective = document.getElementById('objective');
 const typingPreview = document.getElementById('typing-preview');
-const practiceGrid  = document.getElementById('practice-grid');
-const nextBtn       = document.getElementById('next-btn');
-const cancelBtn     = document.getElementById('cancel-btn');
-const allKeys       = document.querySelectorAll('.key[data-key]');
+const hiddenInput = document.getElementById('hidden-input');
+const progressArc = document.getElementById('progress-arc');
+const circleText = document.getElementById('circle-text');
+const lessonList = document.getElementById('lessons-list');
+const xpAmount = document.getElementById('xp-amount');
+const nextBtn = document.getElementById('next-btn');
+const cancelBtn = document.getElementById('cancel-btn');
+const timerEl = document.getElementById('timer');
 
-// ── BUILD LESSON LIST ──
-function buildLessonList(){
-  const list = document.getElementById('lessons-list');
-  list.innerHTML = '';
-  LESSONS_PREVIEW.forEach(l => {
-    const div = document.createElement('div');
-    div.className = 'lesson-item' + (l.id === 1 ? ' active' : '');
-    div.innerHTML = `
-      <div class="lesson-num">${l.id}</div>
-      <div class="lesson-name">${l.title}</div>
-      <div class="lesson-icon">${l.unlocked ? '›' : '🔒'}</div>
-    `;
-    list.appendChild(div);
-  });
-}
-buildLessonList();
+// ----- State -----
+let currentLessonId = 1;
+let currentSubLessonId = '1.1';
+let currentSequenceIndex = 0;
+let typedChars = '';
+let isCompleted = false;
+let totalSeconds = 240;
+let timerInterval = null;
+let typingStarted = false;
 
-// ── BUILD PRACTICE GRID ──
-function buildPracticeGrid(){
-  practiceGrid.innerHTML = '';
-  const rows = [
-    ['a','j','j','a','space'],
-    ['a','k','k','a','space'],
-  ];
-  rows.forEach((row, ri) => {
-    const rowDiv = document.createElement('div');
-    rowDiv.className = 'practice-row';
-    row.forEach((k, ki) => {
-      if(k === 'space'){
-        const sp = document.createElement('div');
-        sp.className = 'pspace';
-        sp.textContent = 'Space';
-        rowDiv.appendChild(sp);
-      } else {
-        const kd = document.createElement('div');
-        kd.className = 'pkey' + (ri === 0 && ki === 0 ? ' active-pkey' : '');
-        kd.textContent = k;
-        rowDiv.appendChild(kd);
-      }
-    });
-    practiceGrid.appendChild(rowDiv);
-  });
-}
-buildPracticeGrid();
+// ----- Load a Lesson -----
+function loadLesson(lessonId, subLessonId) {
+    const lesson = LEARN_CONTENT.lessons.find(l => l.id === lessonId);
+    if (!lesson) return;
+    const subLesson = lesson.subLessons.find(s => s.id === subLessonId);
+    if (!subLesson) return;
 
-// ── BUILD BARS CHART ──
-function buildBars(){
-  const chart = document.getElementById('bars-chart');
-  chart.innerHTML = '';
-  const heights = [15,22,30,38,42,50,58,65,72,80,88,100];
-  heights.forEach((h, i) => {
-    const bar = document.createElement('div');
-    bar.className = 'bar' + (i === heights.length - 1 ? ' bar-active' : '');
-    bar.style.height = h + '%';
-    chart.appendChild(bar);
-  });
-}
-buildBars();
-
-// ── RENDER TYPING TEXT ──
-function renderText(){
-  typingPreview.innerHTML = '';
-  LESSON_TEXT.split('').forEach((ch, i) => {
-    const span = document.createElement('span');
-    span.textContent = ch;
-    if(i < currentIndex) span.className = 'correct-char';
-    if(i === currentIndex) span.className = 'active-char';
-    typingPreview.appendChild(span);
-  });
-}
-renderText();
-
-// ── TIMER ──
-function startTimer(){
-  if(typingStarted) return;
-  typingStarted = true;
-  timerInterval = setInterval(() => {
-    totalSeconds--;
-    const m = Math.floor(totalSeconds / 60);
-    const s = totalSeconds % 60;
-    timerEl.textContent = m + ':' + (s < 10 ? '0' : '') + s;
-    if(totalSeconds <= 0){
-      clearInterval(timerInterval);
-      finishLesson();
+    // Check if unlocked
+    if (!UserData.unlockedLessons.includes(lessonId)) {
+        alert('This lesson is locked. Complete previous lessons first.');
+        return;
     }
-  }, 1000);
+
+    // Update UI
+    lessonTitle.textContent = `Lesson ${lessonId}.${subLessonId}`;
+    subLessonTitle.textContent = subLesson.title;
+    objective.textContent = subLesson.objective;
+
+    // Reset state
+    currentSequenceIndex = 0;
+    typedChars = '';
+    isCompleted = false;
+    hiddenInput.value = '';
+    typingStarted = false;
+    clearInterval(timerInterval);
+    totalSeconds = 240;
+    timerEl.textContent = '04:00';
+
+    // Display first sequence
+    displaySequence(subLesson.sequences[0]);
+    updateProgress();
+    updateLessonList();
+    updateStats();
+    hiddenInput.focus();
 }
 
-// ── KEYBOARD HIGHLIGHT ──
-function highlightKey(key){
-  allKeys.forEach(k => k.classList.remove('active-key'));
-  const upper = key.toUpperCase();
-  allKeys.forEach(k => {
-    if(k.dataset.key === upper) k.classList.add('active-key');
-  });
-  const spaceKey = document.getElementById('space-key');
-  if(key === ' '){
-    spaceKey.style.boxShadow = '0 0 0 2px white, 0 0 20px rgba(255,255,255,0.3)';
-  } else {
-    spaceKey.style.boxShadow = '';
-  }
+// ----- Display a Sequence -----
+function displaySequence(seq) {
+    typingPreview.innerHTML = '';
+    seq.split('').forEach((ch, i) => {
+        const span = document.createElement('span');
+        span.textContent = ch;
+        span.dataset.index = i;
+        span.className = i === 0 ? 'active-char' : '';
+        typingPreview.appendChild(span);
+    });
 }
 
-// ── FINISH ──
-function finishLesson(){
-  if(isCompleted) return;
-  isCompleted = true;
-  clearInterval(timerInterval);
-  setTimeout(() => alert('🎉 Lesson Completed!'), 200);
+// ----- Update Progress Bar -----
+function updateProgress() {
+    const total = typingPreview.children.length;
+    const done = typedChars.length;
+    const percent = Math.round((done / total) * 100);
+    const circumference = 238.76;
+    const offset = circumference - (percent / 100) * circumference;
+    progressArc.style.strokeDashoffset = offset;
 }
 
-// ── MAIN TYPING ──
-hiddenInput.addEventListener('keydown', e => {
-  startTimer();
-  if(isCompleted) return;
-  if(e.key === 'Shift' || e.key === 'CapsLock') return;
-  if(e.key === 'Tab'){ e.preventDefault(); return; }
+// ----- Update Stats -----
+function updateStats() {
+    const totalLessons = LEARN_CONTENT.lessons.length;
+    const completed = UserData.completedLessons.length;
+    circleText.textContent = Math.round((completed / totalLessons) * 100) + '%';
+    xpAmount.textContent = UserData.xp;
+}
 
-  const expected = LESSON_TEXT[currentIndex];
-  const pressed  = e.key;
+// ----- Build Lesson List -----
+function updateLessonList() {
+    lessonList.innerHTML = '';
+    LEARN_CONTENT.lessons.forEach(lesson => {
+        const div = document.createElement('div');
+        const isActive = lesson.id === currentLessonId;
+        const unlocked = UserData.unlockedLessons.includes(lesson.id);
+        div.className = 'lesson-item' + (isActive ? ' active' : '');
+        div.innerHTML = `
+            <div class="lesson-num">${lesson.id}</div>
+            <div class="lesson-name">${lesson.title}</div>
+            <div class="lesson-icon">${unlocked ? '›' : '🔒'}</div>
+        `;
+        div.addEventListener('click', () => {
+            if (!unlocked) return;
+            const firstSub = lesson.subLessons[0];
+            if (firstSub) {
+                currentLessonId = lesson.id;
+                currentSubLessonId = firstSub.id;
+                loadLesson(currentLessonId, currentSubLessonId);
+            }
+        });
+        lessonList.appendChild(div);
+    });
+}
 
-  highlightKey(pressed);
+// ----- Move to Next Sub‑Lesson -----
+function moveToNextSubLesson() {
+    const lesson = LEARN_CONTENT.lessons.find(l => l.id === currentLessonId);
+    const subLessons = lesson.subLessons;
+    const currentIdx = subLessons.findIndex(s => s.id === currentSubLessonId);
 
-  if(pressed === 'Backspace'){
-    e.preventDefault();
-    if(currentIndex > 0) currentIndex--;
-    renderText();
-    return;
-  }
+    if (currentIdx < subLessons.length - 1) {
+        currentSubLessonId = subLessons[currentIdx + 1].id;
+        loadLesson(currentLessonId, currentSubLessonId);
+    } else {
+        // All sub‑lessons done → unlock next lesson
+        UserData.unlockLesson(currentLessonId + 1);
+        isCompleted = true;
+        alert('🎉 Lesson completed!');
+        checkAllAchievements();
+        updateStats();
+    }
+}
 
-  totalTyped++;
+// ----- Timer -----
+function startTimer() {
+    if (typingStarted) return;
+    typingStarted = true;
+    timerInterval = setInterval(() => {
+        totalSeconds--;
+        const m = Math.floor(totalSeconds / 60);
+        const s = totalSeconds % 60;
+        timerEl.textContent = m + ':' + (s < 10 ? '0' : '') + s;
+        if (totalSeconds <= 0) {
+            clearInterval(timerInterval);
+            alert('⏰ Time is up! Try again.');
+            resetLesson();
+        }
+    }, 1000);
+}
 
-  if(pressed === expected){
-    correctTyped++;
-    currentIndex++;
-  } else {
-    mistakes++;
-    trainerCard.classList.add('shake');
-    navigator.vibrate && navigator.vibrate(60);
-    setTimeout(() => trainerCard.classList.remove('shake'), 150);
-  }
+// ----- Reset Lesson -----
+function resetLesson() {
+    typedChars = '';
+    hiddenInput.value = '';
+    typingStarted = false;
+    clearInterval(timerInterval);
+    totalSeconds = 240;
+    timerEl.textContent = '04:00';
+    const lesson = LEARN_CONTENT.lessons.find(l => l.id === currentLessonId);
+    const subLesson = lesson.subLessons.find(s => s.id === currentSubLessonId);
+    displaySequence(subLesson.sequences[0]);
+    updateProgress();
+    hiddenInput.focus();
+}
 
-  renderText();
+// ----- Typing Input Handler -----
+hiddenInput.addEventListener('input', () => {
+    startTimer();
+    if (isCompleted) return;
 
-  if(currentIndex >= LESSON_TEXT.length) finishLesson();
+    const value = hiddenInput.value;
+    const currentSeq = typingPreview.innerText;
+    const maxLen = currentSeq.length;
+
+    if (value.length > maxLen) {
+        // Sequence completed
+        UserData.completeSubLesson(currentLessonId, currentSubLessonId);
+        moveToNextSubLesson();
+        return;
+    }
+
+    typedChars = value;
+    updateProgress();
+
+    const spans = typingPreview.querySelectorAll('span');
+    spans.forEach((span, i) => {
+        span.className = '';
+        if (i < typedChars.length) {
+            if (span.textContent === typedChars[i]) {
+                span.classList.add('correct-char');
+            } else {
+                span.classList.add('wrong-char');
+            }
+        } else if (i === typedChars.length) {
+            span.classList.add('active-char');
+        }
+    });
 });
 
-hiddenInput.addEventListener('keyup', () => {
-  allKeys.forEach(k => k.classList.remove('active-key'));
-  document.getElementById('space-key').style.boxShadow = '';
+// ----- Navigation -----
+nextBtn.addEventListener('click', () => {
+    const lesson = LEARN_CONTENT.lessons.find(l => l.id === currentLessonId);
+    const subLessons = lesson.subLessons;
+    const idx = subLessons.findIndex(s => s.id === currentSubLessonId);
+    if (idx < subLessons.length - 1) {
+        currentSubLessonId = subLessons[idx + 1].id;
+        loadLesson(currentLessonId, currentSubLessonId);
+    } else {
+        alert('Last sub‑lesson of this lesson.');
+    }
 });
 
-// ── FOCUS ──
-document.addEventListener('click',     () => hiddenInput.focus());
-document.addEventListener('mousemove', () => hiddenInput.focus());
-window.addEventListener('load',        () => hiddenInput.focus());
-window.addEventListener('focus',       () => hiddenInput.focus());
+cancelBtn.addEventListener('click', resetLesson);
 
-// ── CANCEL ──
-cancelBtn.addEventListener('click', () => {
-  currentIndex = 0; mistakes = 0; totalTyped = 0; correctTyped = 0;
-  isCompleted = false; typingStarted = false;
-  clearInterval(timerInterval);
-  totalSeconds = 240;
-  timerEl.textContent = '04:00';
-  renderText();
-  hiddenInput.value = '';
-  hiddenInput.focus();
+// ----- Auto‑focus -----
+document.addEventListener('click', () => hiddenInput.focus());
+window.addEventListener('load', () => hiddenInput.focus());
+
+// ----- Load Initial Lesson -----
+loadLesson(1, '1.1');
+
+const menuToggle = document.querySelector(".menu-toggle");
+
+const sidebar = document.querySelector(".left-sidebar");
+
+menuToggle.addEventListener("click", () => {
+
+  sidebar.classList.toggle("active");
+
 });
-
-// ── NEXT ──
-nextBtn.addEventListener('click', () => alert('Next Lesson Loading...'));
-
-// ── THEME ──
-document.getElementById('theme-btn').addEventListener('click', function(){
-  document.body.classList.toggle('light');
-  this.textContent = document.body.classList.contains('light') ? '🌙' : '☀';
-});
-
-hiddenInput.focus();

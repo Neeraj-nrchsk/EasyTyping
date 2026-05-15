@@ -1,695 +1,210 @@
-/* =========================
-   EASYTYPING V2
-   PRACTICE ENGINE
-========================= */
+// ========================================
+// practice.js – Rich Practice Engine
+// Version 2.0
+// ========================================
 
+import { UserData } from '../userData.js';
+import { checkAllAchievements } from '../achievements.js';
+import { PRACTICE_ENGINE } from './practiceContent.js';
 
-/* =========================
-   WORD DATABASE
-========================= */
+// ----- DOM Elements -----
+const practiceText = document.querySelector('.practice-text');
+const practiceInput = document.querySelector('.practice-input');
+const wpmElement = document.getElementById('practice-wpm');
+const accuracyElement = document.getElementById('practice-accuracy');
+const timerElement = document.getElementById('practice-timer');
+const modeButtons = document.querySelectorAll('.mode-btn');
+const durationButtons = document.querySelectorAll('.duration-btn');
+const restartBtn = document.querySelector('.restart-practice-btn');
+const focusBtn = document.querySelector('.focus-btn');
+const resultOverlay = document.querySelector('.practice-result-overlay');
+const resultModal = document.querySelector('.practice-result-modal');
+const resultWpm = document.querySelector('#result-wpm');
+const resultAccuracy = document.querySelector('#result-accuracy');
+const resultXp = document.querySelector('#result-xp');
+const retryBtn = document.querySelector('.retry-btn');
+const continueBtn = document.querySelector('.continue-btn');
 
-const wordSets = {
-
-words: [
-"speed",
-"typing",
-"keyboard",
-"lesson",
-"practice",
-"focus",
-"accuracy",
-"performance",
-"coding",
-"future",
-"javascript",
-"monitor",
-"challenge",
-"improve",
-"gaming"
-],
-
-numbers: [
-"123",
-"456",
-"789",
-"2026",
-"404",
-"8080",
-"100",
-"999"
-],
-
-punctuation: [
-"hello,",
-"world!",
-"typing.",
-"focus?",
-"speed:",
-"easytyping;",
-"\"practice\""
-],
-
-mixed: [
-"speed123",
-"hello!",
-"future2026",
-"code.",
-"typing?",
-"easytyping123"
-]
-
-};
-
-
-/* =========================
-   ELEMENTS
-========================= */
-
-const practiceText =
-document.querySelector(
-    ".practice-text"
-);
-
-const practiceInput =
-document.querySelector(
-    ".practice-input"
-);
-
-const wpmElement =
-document.getElementById(
-    "practice-wpm"
-);
-
-const accuracyElement =
-document.getElementById(
-    "practice-accuracy"
-);
-
-const timerElement =
-document.getElementById(
-    "practice-timer"
-);
-
-const modeButtons =
-document.querySelectorAll(
-    ".mode-btn"
-);
-
-const durationButtons =
-document.querySelectorAll(
-    ".duration-btn"
-);
-
-const restartBtn =
-document.querySelector(
-    ".restart-practice-btn"
-);
-
-const focusBtn =
-document.querySelector(
-    ".focus-btn"
-);
-
-const soundBtn =
-document.querySelector(
-    ".sound-btn"
-);
-
-const resultOverlay =
-document.querySelector(
-    ".practice-result-overlay"
-);
-
-const resultModal =
-document.querySelector(
-    ".practice-result-modal"
-);
-
-const retryBtn =
-document.querySelector(
-    ".retry-btn"
-);
-
-const continueBtn =
-document.querySelector(
-    ".continue-btn"
-);
-
-
-/* =========================
-   VARIABLES
-========================= */
-
-let currentMode = "words";
-
+// ----- State -----
+let currentMode = 'words';
 let currentDuration = 30;
-
 let timer = currentDuration;
-
-let timerStarted = false;
-
 let timerInterval = null;
-
-let currentIndex = 0;
-
-let totalTyped = 0;
-
-let correctTyped = 0;
-
+let typedChars = '';
+let totalChars = 0;
+let correctChars = 0;
 let mistakes = 0;
-
-let practiceTextData = "";
-
-let soundEnabled = true;
-
+let isActive = false;
 let weakKeys = {};
 
-let practiceHistory = [];
-
-
-/* =========================
-   GENERATE TEXT
-========================= */
-
-function generatePracticeText(){
-
-    let words =
-    wordSets[currentMode];
-
-    let text = "";
-
-    for(let i = 0; i < 40; i++){
-
-        const random =
-        Math.floor(
-            Math.random()
-            * words.length
-        );
-
-        text +=
-        words[random] + " ";
-
+// ----- Generate Practice Text -----
+function generateText() {
+    let text = '';
+    switch (currentMode) {
+        case 'words':
+            text = PRACTICE_ENGINE.generateWordTest(30, 'medium');
+            break;
+        case 'numbers':
+            text = PRACTICE_ENGINE.generateCustomTest({ numbers: true });
+            break;
+        case 'punctuation':
+            text = PRACTICE_ENGINE.generateCustomTest({ punctuation: true });
+            break;
+        case 'mixed':
+            text = PRACTICE_ENGINE.generateMixedTest(30);
+            break;
+        default:
+            text = PRACTICE_ENGINE.generateWordTest(30, 'easy');
     }
-
-    practiceTextData = text.trim();
-
-}
-
-
-/* =========================
-   RENDER TEXT
-========================= */
-
-function renderPracticeText(){
-
-    practiceText.innerHTML = "";
-
-    practiceTextData
-    .split("")
-    .forEach((char,index) => {
-
-        const span =
-        document.createElement(
-            "span"
-        );
-
-        span.innerText = char;
-
-        if(index < currentIndex){
-
-            span.classList.add(
-                "correct-char"
-            );
-
-        }
-
-        else if(
-            index === currentIndex
-        ){
-
-            span.classList.add(
-                "active-char"
-            );
-
-        }
-
-        practiceText.appendChild(
-            span
-        );
-
+    practiceText.innerHTML = '';
+    text.split('').forEach((ch, i) => {
+        const span = document.createElement('span');
+        span.textContent = ch;
+        span.dataset.index = i;
+        span.className = i === 0 ? 'active-char' : '';
+        practiceText.appendChild(span);
     });
-
 }
 
+// ----- Update Stats -----
+function updateStats() {
+    const elapsed = (currentDuration - timer) / 60;
+    const wpm = elapsed > 0 ? Math.round((correctChars / 5) / elapsed) : 0;
+    const accuracy = totalChars > 0 ? Math.round((correctChars / totalChars) * 100) : 100;
+    wpmElement.textContent = wpm;
+    accuracyElement.textContent = accuracy + '%';
+}
 
-/* =========================
-   TIMER
-========================= */
-
-function startTimer(){
-
-    if(timerStarted){
-
-        return;
-
-    }
-
-    timerStarted = true;
-
-    clearInterval(timerInterval);
-
+// ----- Timer -----
+function startTimer() {
+    if (isActive) return;
+    isActive = true;
     timerInterval = setInterval(() => {
-
         timer--;
-
-        timerElement.innerText =
-        timer;
-
-        if(timer <= 0){
-
-            clearInterval(
-                timerInterval
-            );
-
-            finishPractice();
-
-        }
-
-    },1000);
-
+        timerElement.textContent = timer;
+        if (timer <= 0) finishPractice();
+    }, 1000);
 }
 
-
-/* =========================
-   STATS
-========================= */
-
-function updateStats(){
-
-    const elapsedMinutes =
-    (currentDuration - timer)
-    / 60;
-
-    let wpm = 0;
-
-    if(elapsedMinutes > 0){
-
-        wpm = Math.round(
-            (correctTyped / 5)
-            / elapsedMinutes
-        );
-
-    }
-
-    let accuracy = 100;
-
-    if(totalTyped > 0){
-
-        accuracy = Math.round(
-            (
-                correctTyped
-                / totalTyped
-            ) * 100
-        );
-
-    }
-
-    wpmElement.innerText =
-    wpm;
-
-    accuracyElement.innerText =
-    `${accuracy}%`;
-
-}
-
-
-/* =========================
-   WEAK KEYS
-========================= */
-
-function trackWeakKey(key){
-
-    if(!weakKeys[key]){
-
-        weakKeys[key] = 0;
-
-    }
-
-    weakKeys[key]++;
-
-}
-
-
-/* =========================
-   FINISH PRACTICE
-========================= */
-
-function finishPractice(){
-
-    resultOverlay.classList.remove(
-        "hidden"
-    );
-
-    resultModal.classList.remove(
-        "hidden"
-    );
-
-    savePracticeAnalytics();
-
-}
-
-
-/* =========================
-   SAVE ANALYTICS
-========================= */
-
-function savePracticeAnalytics(){
-
-    const data = {
-
-        mode:
-        currentMode,
-
-        wpm:
-        wpmElement.innerText,
-
-        accuracy:
-        accuracyElement.innerText,
-
-        mistakes:
-        mistakes,
-
-        date:
-        new Date()
-        .toLocaleDateString()
-
-    };
-
-    practiceHistory.push(data);
-
-    localStorage.setItem(
-        "easytyping-practice",
-        JSON.stringify(
-            practiceHistory
-        )
-    );
-
-}
-
-
-/* =========================
-   RESET
-========================= */
-
-function resetPractice(){
-
+// ----- Finish Practice -----
+function finishPractice() {
     clearInterval(timerInterval);
+    isActive = false;
 
-    timer =
-    currentDuration;
+    const elapsed = (currentDuration - timer) / 60;
+    const wpm = elapsed > 0 ? Math.round((correctChars / 5) / elapsed) : 0;
+    const accuracy = totalChars > 0 ? Math.round((correctChars / totalChars) * 100) : 100;
+    const xp = Math.round(wpm / 2) + 5;
 
-    timerElement.innerText =
-    timer;
+    // Record practice session
+    UserData.recordPractice({
+        mode: currentMode,
+        duration: currentDuration,
+        wpm: wpm,
+        accuracy: accuracy,
+        mistakes: mistakes,
+        weakKeys: weakKeys
+    });
+    UserData.addXP(xp);
+    checkAllAchievements();
 
-    currentIndex = 0;
+    // Show result modal
+    resultWpm.textContent = wpm;
+    resultAccuracy.textContent = accuracy + '%';
+    resultXp.textContent = '+' + xp;
+    resultModal.classList.remove('hidden');
+    resultOverlay.classList.remove('hidden');
+}
 
-    totalTyped = 0;
-
-    correctTyped = 0;
-
+// ----- Reset Practice -----
+function resetPractice() {
+    clearInterval(timerInterval);
+    isActive = false;
+    timer = currentDuration;
+    timerElement.textContent = timer;
+    typedChars = '';
+    totalChars = 0;
+    correctChars = 0;
     mistakes = 0;
-
-    timerStarted = false;
-
-    practiceInput.value = "";
-
-    resultOverlay.classList.add(
-        "hidden"
-    );
-
-    resultModal.classList.add(
-        "hidden"
-    );
-
-    generatePracticeText();
-
-    renderPracticeText();
-
-    updateStats();
-
-    focusInput();
-
-}
-
-
-/* =========================
-   FOCUS
-========================= */
-
-function focusInput(){
-
+    weakKeys = {};
+    practiceInput.value = '';
+    generateText();
+    wpmElement.textContent = '0';
+    accuracyElement.textContent = '100%';
+    resultModal.classList.add('hidden');
+    resultOverlay.classList.add('hidden');
     practiceInput.focus();
-
 }
 
+// ----- Typing Input Handler -----
+practiceInput.addEventListener('input', () => {
+    if (!isActive) startTimer();
 
-/* =========================
-   TYPING ENGINE
-========================= */
+    const value = practiceInput.value;
+    const targetText = practiceText.innerText;
+    typedChars = value;
+    totalChars = value.length;
 
-practiceInput.addEventListener(
-    "keydown",
-    (e) => {
-
-    if(!timerStarted){
-
-        startTimer();
-
-    }
-
-    if(e.key === "Backspace"){
-
-        e.preventDefault();
-
-        if(currentIndex > 0){
-
-            currentIndex--;
-
-            renderPracticeText();
-
+    const spans = practiceText.querySelectorAll('span');
+    spans.forEach((span, i) => {
+        span.className = '';
+        if (i < value.length) {
+            if (span.textContent === value[i]) {
+                span.classList.add('correct-char');
+                correctChars++;
+            } else {
+                span.classList.add('wrong-char');
+                mistakes++;
+                const key = value[i].toLowerCase();
+                weakKeys[key] = (weakKeys[key] || 0) + 1;
+            }
+        } else if (i === value.length) {
+            span.classList.add('active-char');
         }
-
-        return;
-
-    }
-
-    if(e.key.length > 1){
-
-        return;
-
-    }
-
-    totalTyped++;
-
-    const expected =
-    practiceTextData[currentIndex];
-
-    if(e.key === expected){
-
-        currentIndex++;
-
-        correctTyped++;
-
-    }
-
-    else{
-
-        mistakes++;
-
-        trackWeakKey(e.key);
-
-    }
-
-    renderPracticeText();
+    });
 
     updateStats();
 
-});
-
-
-/* =========================
-   MODES
-========================= */
-
-modeButtons.forEach(
-    button => {
-
-    button.addEventListener(
-        "click",
-        () => {
-
-        modeButtons.forEach(
-            btn => {
-
-            btn.classList.remove(
-                "active-mode"
-            );
-
-        });
-
-        button.classList.add(
-            "active-mode"
-        );
-
-        currentMode =
-        button.innerText
-        .toLowerCase();
-
-        resetPractice();
-
-    });
-
-});
-
-
-/* =========================
-   DURATIONS
-========================= */
-
-durationButtons.forEach(
-    button => {
-
-    button.addEventListener(
-        "click",
-        () => {
-
-        durationButtons.forEach(
-            btn => {
-
-            btn.classList.remove(
-                "active-duration"
-            );
-
-        });
-
-        button.classList.add(
-            "active-duration"
-        );
-
-        currentDuration =
-        Number(
-            button.innerText
-            .replace("s","")
-        );
-
-        resetPractice();
-
-    });
-
-});
-
-
-/* =========================
-   CONTROLS
-========================= */
-
-restartBtn.addEventListener(
-    "click",
-    () => {
-
-    resetPractice();
-
-});
-
-
-focusBtn.addEventListener(
-    "click",
-    () => {
-
-    document.body
-    .classList.toggle(
-        "focus-mode"
-    );
-
-});
-
-
-soundBtn.addEventListener(
-    "click",
-    () => {
-
-    soundEnabled =
-    !soundEnabled;
-
-});
-
-
-/* =========================
-   RESULT BUTTONS
-========================= */
-
-retryBtn.addEventListener(
-    "click",
-    () => {
-
-    resetPractice();
-
-});
-
-
-continueBtn.addEventListener(
-    "click",
-    () => {
-
-    resultOverlay.classList.add(
-        "hidden"
-    );
-
-    resultModal.classList.add(
-        "hidden"
-    );
-
-});
-
-
-/* =========================
-   AUTO FOCUS
-========================= */
-
-document.addEventListener(
-    "click",
-    () => {
-
-    focusInput();
-
-});
-
-
-/* =========================
-   LOAD STORAGE
-========================= */
-
-function loadPracticeData(){
-
-    const saved =
-    localStorage.getItem(
-        "easytyping-practice"
-    );
-
-    if(saved){
-
-        practiceHistory =
-        JSON.parse(saved);
-
+    // Auto‑complete if full text typed
+    if (value.length >= targetText.length) {
+        finishPractice();
     }
+});
 
-}
+// ----- Mode Selection -----
+modeButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        modeButtons.forEach(b => b.classList.remove('active-mode'));
+        btn.classList.add('active-mode');
+        currentMode = btn.textContent.toLowerCase();
+        resetPractice();
+    });
+});
 
+// ----- Duration Selection -----
+durationButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        durationButtons.forEach(b => b.classList.remove('active-duration'));
+        btn.classList.add('active-duration');
+        currentDuration = parseInt(btn.textContent.replace('s', ''));
+        resetPractice();
+    });
+});
 
-/* =========================
-   INITIALIZE
-========================= */
+// ----- Controls -----
+restartBtn.addEventListener('click', resetPractice);
+focusBtn.addEventListener('click', () => document.body.classList.toggle('focus-mode'));
 
-loadPracticeData();
+// ----- Result Modal Buttons -----
+retryBtn.addEventListener('click', resetPractice);
+continueBtn.addEventListener('click', () => {
+    resultModal.classList.add('hidden');
+    resultOverlay.classList.add('hidden');
+});
 
+// ----- Auto‑focus -----
+document.addEventListener('click', () => practiceInput.focus());
+window.addEventListener('load', () => practiceInput.focus());
+
+// ----- Initialize -----
 resetPractice();
